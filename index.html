@@ -2,19 +2,34 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles.css">
+    <script src="function.js"></script>
 </head>
 <body>
-    <div class="header1">  
-        <h1>Guten Tag</h1>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+      
+      <div id="main">
+        <header>
+            <button class="headerbtn"></button>
+        </header>
+        <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+
+        <h2>Guten Tag</h2>
         <p1>Guten Tag</p1>
         <ul class="list-group">
             <li class="list-group">Kartoffel auf die 1</li>
             <li class="list-group-item">Yussuf auf die 2</li>
-
-
+            <li class="list-group-item">Can auf die 3</li>
+            <li class="list-group-item">Meik auf die 4</li>
+            <li class="list-group-item">Luca auf die 5</li>
         </ul>
-
     </div>
+
 
 </body>
 </html>
