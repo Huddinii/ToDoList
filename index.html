@@ -2,6 +2,8 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="sidbarstyles.css">
+
     <script src="function.js"></script>
 </head>
 <body>
@@ -15,19 +17,11 @@
       
       <div id="main">
         <header>
-            <button class="headerbtn"></button>
+            <button class="openbtn" onclick="openNav()">&#9776;</button>
+            <h1>To Do Liste</h1>
+            <button class="headerbtn">&#9978;</button>
         </header>
-        <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
-
-        <h2>Guten Tag</h2>
-        <p1>Guten Tag</p1>
-        <ul class="list-group">
-            <li class="list-group">Kartoffel auf die 1</li>
-            <li class="list-group-item">Yussuf auf die 2</li>
-            <li class="list-group-item">Can auf die 3</li>
-            <li class="list-group-item">Meik auf die 4</li>
-            <li class="list-group-item">Luca auf die 5</li>
-        </ul>
+        <input type="text" name="NewEntry" id="NewEntry">
     </div>
 
 
