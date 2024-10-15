@@ -9,3 +9,8 @@ function openNav() {
     document.getElementsByClassName("sidebar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
+
+  function SidebarState() {
+    document.getElementsByClassName("sidebar").style.width = "250px";
+    document.getElementsByClassName("sidebar").style.width = "0";
+  }
