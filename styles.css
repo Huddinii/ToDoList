@@ -1,7 +1,7 @@
 
 header{
   background-color: grey;
-  outline: 28px solid lightgrey;
+  outline: 10px solid lightgrey;
   display: flex;
   justify-content: space-between;
   align-items: center;
