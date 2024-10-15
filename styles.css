@@ -1,7 +1,7 @@
 
 header{
     background-color: grey;
-    outline: 28px solid lightgrey;
+    outline: 10px solid lightgrey;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,15 +27,28 @@ h1{
 
   
   /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-  #main {
+  .main {
     transition: margin-left .5s; /* If you want a transition effect */
     padding: 20px;
+    height: 100%;
+    background-color: aqua;
   }
   .NewEntry {
-    top: 200px;
+    margin-top: 1px;
+    vertical-align: top;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    transition: margin-left .5s;
+    right: 60px;
+  }
+  .NEbtn {
+    margin-top: 10px;
+    vertical-align: top;
+    margin-left: auto;
+    margin-right: auto;
 
   }
-
 
 
   
