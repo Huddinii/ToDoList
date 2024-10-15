@@ -30,6 +30,7 @@ h1{
 .main {
   transition: margin-left .5s; /* If you want a transition effect */
   padding: 20px;
+  background-color: aqua;
 }
 .NewEntry {
   top: 200px;
