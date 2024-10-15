@@ -1,59 +1,47 @@
 
 header{
-    background-color: grey;
-    outline: 10px solid lightgrey;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  background-color: grey;
+  outline: 28px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 h1{
   color: black;
   font-family: Arial;
   margin: 0;
-
 }
 
-  .headerbtn {
-    font-size:  20px;
-    cursor: pointer;
-    background-color: red;
-    padding: 10px 15px;
-    border: none;
-  }
-  .headerbtn:hover {
-    background-color: salmon;
-  }
+.headerbtn {
+  font-size:  20px;
+  cursor: pointer;
+  background-color: red;
+  padding: 10px 15px;
+  border: none;
+}
+
+.headerbtn:hover {
+  background-color: salmon;
+}
 
   
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-  .main {
-    transition: margin-left .5s; /* If you want a transition effect */
-    padding: 20px;
-    height: 100%;
-    background-color: aqua;
-  }
-  .NewEntry {
-    margin-top: 1px;
-    vertical-align: top;
-    margin-right: auto;
-    margin-left: auto;
-    display: flex;
-    transition: margin-left .5s;
-    right: 60px;
-  }
-  .NEbtn {
-    margin-top: 10px;
-    vertical-align: top;
-    margin-left: auto;
-    margin-right: auto;
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+.main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+.NewEntry {
+  top: 200px;
+}
 
-  }
+.PriorityCategories ul {
+  list-style: none;
+  display: inline-flex;
+}
 
-
-  
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-  }
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
