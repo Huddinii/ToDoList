@@ -8,37 +8,39 @@
 </head>
 <body>
     <div class="sidebar">
-        <button onclick="SidebarState()"></button>
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
+        <div id="sidebarelements">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
     </div>
     <div class="header">
         <header>
-            <button class="openbtn" onclick="openNav()">&#9776;</button>
             <h1>To Do Liste</h1>
             <button class="headerbtn">&#9978;</button>
         </header>
     </div>
     <div class="main">
-        <div class="Textblock">
-            <h2>
-                ToDos
-            </h2>
-            <div class="PriorityCategories">
-                <ul>
-                    <li>Highest</li>
-                    <li>High</li>
-                    <li>Medium</li>
-                    <li>Low</li>
-                </ul>
+         <h2>
+             ProjectName
+         </h2>
+         <div class="PriorityCategories">
+             <div class="PriorityElement">
+                <h3>Highest</h3>
             </div>
-        </div>
-        <div class="ToDoGrid">
-
-        </div>
+             <div class="PriorityElement">
+                <h3>High</h3>
+            </div>
+             <div class="PriorityElement">
+                <h3>Medium</h3>
+             </div>
+             <div class="PriorityElement">
+                <h3>Low</h3>
+             </div>
+         </div>
         <input type="text" name="NewEntry" id="NewEntry">
     </div>
     
