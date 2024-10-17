@@ -5,7 +5,6 @@
     left: 0;
     background-color: #363636; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    max-width: 20%;
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
     display: table-cell;
     vertical-align: top;
