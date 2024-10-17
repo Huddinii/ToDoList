@@ -6,12 +6,11 @@
     z-index: 1; /* Stay on top */
     top: 65px;
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: #363636; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     max-width: 20%;
     padding-top: 10px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-    min-width: 5%;
   }
   
   /* The sidebar links */
@@ -20,9 +19,10 @@
     text-decoration: none;
     font-family:  Arial;
     font-size: 25px;
-    color: #818181;
+    color: #FFFFFF;
     display: block;
     transition: 0.3s;
+    max-width: 250px;
   }
   
   /* When you mouse over the navigation links, change their color */
@@ -41,18 +41,17 @@
   
   /* The button used to open the sidebar */
   .openbtn {
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
     background-color: #111;
     color: white;
-    padding: 10px 15px;
+    padding: 5px 10px;
     border: 1px;
     border-style: solid;
     border-color: white;
-    border-radius: 75%;
-    margin: 20px;
-    position: absolute;
-    right: 0;
+    border-radius: 25%;
+    margin: 7px;
+    left: 0;
   }
 
   .openbtn:hover {
