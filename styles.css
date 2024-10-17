@@ -1,11 +1,24 @@
 
 header{
   background-color: grey;
-  outline: 10px solid lightgrey;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+html{
+ height: 100%;
+
+}
+body{
+ height: 100%;
+ margin: 0;
+}
+.ContentWrapper{
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
 
 h1{
   color: black;
@@ -25,13 +38,15 @@ h1{
   background-color: salmon;
 }
 
+
   
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 .main {
   transition: margin-left .5s; /* If you want a transition effect */
-  padding: 20px;
   background-color: aqua;
-  width: calc(screen - "sidebar.style.width");
+  width: inherit;
+  display: table-cell;
+  vertical-align: top;
 }
 .NewEntry {
   top: 200px;
