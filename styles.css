@@ -4,6 +4,7 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
 }
 html{
  height: 100%;
@@ -11,6 +12,7 @@ html{
 }
 body{
  height: 100%;
+ top: 64;
  margin: 0;
 }
 .ContentWrapper{
