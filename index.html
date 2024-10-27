@@ -1,53 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="styles.css"/>
-    <link rel="stylesheet" href="sidbarstyles.css"/>
-
-    <script src="function.js"></script>
+    <link rel="stylesheet" href="loginstyles.css"/>
+    <script src="loginfunctions.js"></script>
 </head>
 <body>
-    <div class="header">
-        <header>
-            <h1>To Do Liste</h1>
-            <button class="headerbtn">&#9978;</button>
-        </header>
-    </div>
-    <div class="ContentWrapper">
-    <div class="sidebar">
-        <button class="openbtn" onclick="changeNav()">&#9776;</button>
-        <div id="sidebarelements">
-            <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-        </div>
-    </div>
-    <div class="Entry">
-        <input id="NewEntry" ></input>
-        <button id="btnNewEntry">+</button>
-    </div>
-    <div class="main">
-         <h2>
-             ProjectName
-         </h2>
-         <div class="PriorityCategories">
-             <div class="PriorityElement">
-                <h3>Highest</h3>
-            </div>
-             <div class="PriorityElement">
-                <h3>High</h3>
-            </div>
-             <div class="PriorityElement">
-                <h3>Medium</h3>
-             </div>
-             <div class="PriorityElement">
-                <h3>Low</h3>
-             </div>
-         </div>
+    <?php
+    echo "Hello World";
+    ?>
 
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="login.php" method="POST">
+            <label for="username">Benutzername</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Passwort</label>
+            <input type="password" id="password" name="password" required>
+        <div class="checkbox-container">
+            <input type="checkbox" id?="show-password" onclick="togglePassword()">Passwort anzeigen </input>
+        </div>
+            <button type="submit" value="Einloggen">Einloggen</button>
     </div>
-    </div>    
+</form>
+
 </body>
 </html>
