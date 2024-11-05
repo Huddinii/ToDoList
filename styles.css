@@ -10,6 +10,12 @@ header{
   position: sticky;
   top: 0;
   z-index: 100;
+  height: 5%;
+}
+
+.ScreenWrapper{
+  height: 100%;
+  width: 100%;
 }
 
 html{
@@ -23,7 +29,7 @@ body{
 }
 .ContentWrapper{
   display: table;
-  height: 100%;
+  height: 95%;
   width: 100%;
   transition: 0.5s;
 }
