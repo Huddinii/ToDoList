@@ -7,6 +7,10 @@
     <script src="function.js"></script>
 </head>
 <body>
+    <?php 
+        include('sql.php');
+        echo "Working";
+    ?>
     <div class="ScreenWrapper">
         <div class="header">
             <header>
@@ -25,26 +29,31 @@
                     <a href="#">Contact</a>
                 </div>
             </div>
-            <div class="Entry">
-                <input id="NewEntry" ></input>
-                <button id="btnNewEntry">+</button>
-            </div>
+            
             <div class="main">
                 <h2>
                     ProjectName
                 </h2>
+                <!-- <div class="Entry"> -->
+                    <!-- <input id="NewEntry" ></input> -->
+                    <!-- <button id="btnNewEntry">+</button> -->
+                <!-- </div> -->
                 <div class="PriorityCategories">
                     <div class="PriorityElement">
                         <h3>Highest</h3>
+                        <button class="addElement"></button>
                     </div>
                     <div class="PriorityElement">
                         <h3>High</h3>
+                        <button class="addElement"></button>
                     </div>
                     <div class="PriorityElement">
                         <h3>Medium</h3>
+                        <button class="addElement"></button>
                     </div>
                     <div class="PriorityElement">
                         <h3>Low</h3>
+                        <button class="addElement"></button>
                     </div>
                 </div>
             </div>
