@@ -9,6 +9,8 @@ function changeNav() {
 }
   /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
 
+// Elemente auswählen
+// Elemente auswählen
 const items = document.querySelectorAll(".PriorityCategories .item");
 const lists = document.querySelectorAll(".PriorityCategories .PriorityElement");
 let currentItem = null;
@@ -67,6 +69,3 @@ lists.forEach((PriorityElement) => {
   PriorityElement.addEventListener("drop", drop);
 
 })
-
-
-
