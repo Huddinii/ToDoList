@@ -39,6 +39,15 @@ h1{
   font-family: Arial;
   margin: 0;
 }
+h2{
+  font-family: Arial;
+}
+
+h3{
+  font-family: Arial;
+  padding: 10px;
+
+}
 
 .headerbtn {
   font-size:  20px;
@@ -116,6 +125,27 @@ h1{
   margin-top: 10%;
 }
 
+.PriorityCategories .PriorityElement .item {
+  cursor: pointer;
+  display: flex;
+  padding: 0.5em;
+  border: 1px solid #bbb;
+  font-size: 15px;
+  font-family:  Arial;
+  margin: 5px;
+  overflow: hidden;
+}
+
+
+.PriorityCategories .PriorityElement .item.drag-activ {
+  border: 1px solid #e1c178;
+  background-color: #fff;
+}
+
+.PriorityCategories .PriorityElement.hovererd {
+  border: 1px dashed #888;
+  background: #fbfbfb;
+}
 
 
 
