@@ -9,63 +9,25 @@ function changeNav() {
 }
   /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
 
-// Elemente auswählen
-// Elemente auswählen
-const items = document.querySelectorAll(".PriorityCategories .item");
-const lists = document.querySelectorAll(".PriorityCategories .PriorityElement");
-let currentItem = null;
-
-function dragStart(e){
-  if(![...e.target.classList].includes("item")){
-    e.preventDefault();
-    return;
-  }
-  currentItem = e.target;
-  e.target.classList.add("drag-active");
-  setTimeout(()=>{
-    e.target.style.display = "none";
-  },0);
-}
-
-  function dragEnd(e) {
-    currentItem = null;
-    e.target.classList.remove("drag-active")
-    e.target.style.display = "flex";
+  function allowDrop(ev) {
+    ev.preventDefault();
   }
   
-  function dragOver(e) {
-    e.preventDefault();
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    console.log("dragging:", ev.target.id);
   }
-
-  function dragEnter(e) {
-    e.preventDefault();
-    e.target.classList.add("hoverd");
+  
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    var target = ev.target;
+  
+    // Überprüfen, ob das Drop-Ziel eine Kategorie ist oder ein leeres Ziel enthält
+    while (!target.classList.contains("PriorityElement")) {
+      target = target.parentNode;
+    }
+    // Füge das gezogene Element in die Ziel-Kategorie ein
+    target.appendChild(document.getElementById(data));
+    console.log("dropped:", data);
   }
-
-  function dragLeave(e) {
-    e.preventDefault();
-    e.target.classList.remove("hoverd");
-  }
-
-function drop(e) {
-  if(![...e.target.classList].includes("PriorityElement")){
-    e.preventDefault();
-    return;
-  }
-  e.target.classList.remove("hoverd");
-  e.target.append(currentItem);
-  currentItem = null;
-}
-
-items.forEach((item) => {
-  item.addEventListener("dragstart", dragStart);
-  item.addEventListener("dragend", dragEnd);
-});
-
-lists.forEach((PriorityElement) => {
-  PriorityElement.addEventListener("dragover", dragOver);
-  PriorityElement.addEventListener("dragenter", dragEnter);
-  PriorityElement.addEventListener("dragleave", dragLeave);
-  PriorityElement.addEventListener("drop", drop);
-
-})
