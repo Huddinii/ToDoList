@@ -31,3 +31,12 @@ function changeNav() {
     target.appendChild(document.getElementById(data));
     console.log("dropped:", data);
   }
+
+  function OpenPopup() {
+    document.getElementById("myForm").style.display = "block";
+    // document.getElementById("ScreenWrapperID").style.pointerEvents = "none";
+    const ScreenWrapper = document.getElementsByClassName("ScreenWrapper")[0]
+    ScreenWrapper.style.pointerEvents = "none";
+    ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    
+  }

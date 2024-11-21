@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 // Verbindung zur Datenbank herstellen
 $servername = "localhost";
 $dbname = "user";
@@ -60,4 +60,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Verbindung schließen
 $conn->close();
 ?>
-
+ -->
