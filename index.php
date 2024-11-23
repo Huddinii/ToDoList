@@ -9,9 +9,26 @@
 <body>
         <div class="Form_Popup" id="myForm">
                     <form class="Form_Container">
+                    <div class="Form_Header">
                     <h1>Neuer To Do</h1>
-                    <input type="text" placeholder="Neuer Eintrag">
-                    <button class="AddEntry">hinzufügen</button>
+                    <button class="CloseForm" onclick="closeFrom()">X</button>
+                    </div>
+                    <div class="div_text_date">
+                    <input type="text" placeholder="Neuer Eintrag" required="required">
+                    <input type="date">
+                    </div>
+                    <div class="div_time">
+                    <p>Von</p>
+                    <input type="time" placeholder="Von">
+                    <p>Bis</p>
+                    <input type="time" placeholder="Bis">
+                    </div>
+                    <div class="div_Form_Textarea">
+                    <textarea class="Form_Textarea" placeholder="Beschreibung"></textarea>
+                    </div>
+                    <div class="Form_Bottom">
+                    <button class="AddEntry" onclick="addEntry()">hinzufügen</button>
+                    </div>
                     </form>
         </div>
 

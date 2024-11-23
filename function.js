@@ -40,3 +40,10 @@ function changeNav() {
     ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
     
   }
+
+  function closeFrom() {
+    document.getElementById("myForm").style.display = "none";
+    const ScreenWrapper = document.getElementsByClassName("ScreenWrapper")[0]
+    ScreenWrapper.style.pointerEvents = "";
+    ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0)";
+  }
