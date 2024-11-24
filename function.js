@@ -47,3 +47,21 @@ function changeNav() {
     ScreenWrapper.style.pointerEvents = "";
     ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0)";
   }
+
+  function createToDo() {
+    var myInput = document.getElementById("text_input").value;
+    
+        // Neues Element erstellen
+        const newItem = document.createElement("div");
+        newItem.className = "item";
+        newItem.draggable = true;
+        newItem.ondragstart = drag;
+        newItem.id = "item5"; // Eindeutige ID vergeben
+        newItem.textContent = myInput;
+    
+        // Füge das neue Element standardmäßig in die "Medium" Kategorie ein
+        document.getElementById("Medium").appendChild(newItem);
+
+
+
+  }

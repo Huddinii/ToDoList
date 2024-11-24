@@ -14,7 +14,7 @@
                     <button class="CloseForm" onclick="closeFrom()">X</button>
                     </div>
                     <div class="div_text_date">
-                    <input type="text" placeholder="Neuer Eintrag" required="required">
+                    <input type="text" placeholder="Neuer Eintrag" required="required" id="text_input">
                     <input type="date">
                     </div>
                     <div class="div_time">
@@ -27,7 +27,7 @@
                     <textarea class="Form_Textarea" placeholder="Beschreibung"></textarea>
                     </div>
                     <div class="Form_Bottom">
-                    <button class="AddEntry" onclick="addEntry()">hinzufügen</button>
+                    <button class="AddEntry" onclick="createToDo()">hinzufügen</button>
                     </div>
                     </form>
         </div>
@@ -71,7 +71,7 @@
                         <h3>High</h3>
                         <!-- <button class="addElement"></button> -->
                     </div>
-                    <div class="PriorityElement" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="PriorityElement" id="Medium" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <h3>Medium</h3>
                         <!-- <button class="addElement"></button> -->
                     </div>
