@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel="stylesheet" href="styles.css"/>
-    <link rel="stylesheet" href="Formstyles.css"/>
-    <link rel="stylesheet" href="sidbarstyles.css"/>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="Formstyles.css" />
+    <link rel="stylesheet" href="sidbarstyles.css" />
     <script src="function.js"></script>
 </head>
+
 <body>
-        <div class="Form_Popup" id="myForm">
-                    <form class="Form_Container">
-                    <div class="Form_Header">
-                    <h1>Neuer To Do</h1>
-                    <button class="CloseForm" onclick="closeFrom()">X</button>
-                    </div>
-                    <div class="div_text_date">
-                    <input type="text" placeholder="Neuer Eintrag" required="required" id="text_input">
-                    <input type="date">
-                    </div>
-                    <div class="div_time">
-                    <p>Von</p>
-                    <input type="time" placeholder="Von">
-                    <p>Bis</p>
-                    <input type="time" placeholder="Bis">
-                    </div>
-                    <div class="div_Form_Textarea">
-                    <textarea class="Form_Textarea" placeholder="Beschreibung"></textarea>
-                    </div>
-                    <div class="Form_Bottom">
-                    <button class="AddEntry" onclick="createToDo()">hinzufügen</button>
-                    </div>
-                    </form>
-        </div>
+    <div class="Form_Popup" id="myForm">
+        <form class="Form_Container">
+            <div class="Form_Header">
+                <h1>Neuer To Do</h1>
+                <button class="CloseForm" onclick="closeFrom()">X</button>
+            </div>
+            <div class="div_text_date">
+                <input type="text" placeholder="Neuer Eintrag" required="required" id="text_input">
+                <input type="date">
+            </div>
+            <div class="div_time">
+                <p>Von</p>
+                <input type="time" placeholder="Von">
+                <p>Bis</p>
+                <input type="time" placeholder="Bis">
+            </div>
+            <div class="div_Form_Textarea">
+                <textarea class="Form_Textarea" placeholder="Beschreibung"></textarea>
+            </div>
+            <div class="Form_Bottom">
+                <button class="AddEntry" onclick="createToDo()">hinzufügen</button>
+            </div>
+        </form>
+    </div>
 
 
     <div class="ScreenWrapper" id="ScreenWrapperID">
         <!-- <div class="header"> -->
-            <header>
-                <h1>To Do Liste</h1>
-                <button class="headerbtn">&#9978;</button>
-            </header>
+        <header>
+            <h1>To Do Liste</h1>
+            <button class="headerbtn">&#9978;</button>
+        </header>
         <!-- </div> -->
         <div class="ContentWrapper">
             <div class="sidebar">
@@ -84,4 +86,5 @@
         </div>
     </div>
 </body>
+
 </html>
