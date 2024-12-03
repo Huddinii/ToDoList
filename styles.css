@@ -95,8 +95,9 @@ h3{
 }
 
 
-#NewEntry {
+.NewEntry {
   font-family: Arial;
+  margin: 0px 8px;
 }
 
 .PriorityCategories{
@@ -122,11 +123,11 @@ h3{
   margin-top: 10%;
 }
 
-.item {
+/* .item {
   display: flex;
   justify-content: space-between;
 
-}
+} */
 .EditItem {
   border: 1px solid;
   border-radius: 10%;
@@ -136,13 +137,17 @@ h3{
 }
 
 .PriorityCategories .PriorityElement .item {
+
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
   display: flex;
   padding: 0.5em;
   border: 1px solid #bbb;
+  border-radius: 5px;
   font-size: 15px;
   font-family:  Arial;
-  margin: 5px;
+  margin: 5px 8px;
   overflow: hidden;
 }
 

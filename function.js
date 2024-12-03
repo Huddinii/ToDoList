@@ -52,7 +52,7 @@ function changeNav() {
     var myInput = document.getElementById("text_input").value;
     
         // Neues Element erstellen
-        const newItem = document.createElement("div");
+        var newItem = document.createElement("div");
         newItem.className = "item";
         newItem.draggable = true;
         newItem.ondragstart = drag;
@@ -61,7 +61,7 @@ function changeNav() {
     
         // Füge das neue Element standardmäßig in die "Medium" Kategorie ein
         document.getElementById("Medium").appendChild(newItem);
-
-
-
+        console.log("Test");
+  
+        closeFrom();
   }

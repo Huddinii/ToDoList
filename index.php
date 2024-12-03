@@ -13,7 +13,7 @@
         <form class="Form_Container">
             <div class="Form_Header">
                 <h1>Neuer To Do</h1>
-                <button class="CloseForm" onclick="closeFrom()">X</button>
+                <button type="button"class="CloseForm" onclick="closeFrom()">X</button>
             </div>
             <div class="div_text_date">
                 <input type="text" placeholder="Neuer Eintrag" required="required" id="text_input">
@@ -29,7 +29,7 @@
                 <textarea class="Form_Textarea" placeholder="Beschreibung"></textarea>
             </div>
             <div class="Form_Bottom">
-                <button class="AddEntry" onclick="createToDo()">hinzufügen</button>
+                <button type="button" class="AddEntry" onclick="createToDo()">hinzufügen</button>
             </div>
         </form>
     </div>
@@ -57,8 +57,8 @@
                 <h2>ProjectName</h2>
                 <div class="PriorityCategories">
                     <div class="PriorityElement" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <button class="NewEntry" onclick="OpenPopup()">New Entry</button>
                         <h3>High</h3>
+                        <button class="NewEntry" onclick="OpenPopup()">New Entry</button>
                         <!-- <button class="addElement"></button> -->
                         <div id="item1" class="item" draggable="true" ondragstart="drag(event)">
                             <p>test1</p>
