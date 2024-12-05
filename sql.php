@@ -7,6 +7,5 @@ $db = new Database(
    authToken: getenv('TURSO_AUTH_TOKEN'),
 );
 
-echo "working";
 
 ?>

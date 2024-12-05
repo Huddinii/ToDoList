@@ -1,63 +1,27 @@
-<?php
-// Verbindung zur Datenbank herstellen
-$servername = "localhost";
-$dbname = "user";
-$username = "test";
-$password = "1234";
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="loginstyles.css"/>
+    <script src="loginfunctions.js"></script>
+</head>
+<body>
+    <?php
+    echo "Hello World";
+    ?>
 
-// Verbindung erstellen
-$conn = new mysqli($servername, $username, $password, $dbname);
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="login.php" method="POST">
+            <label for="username">Benutzername</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Passwort</label>
+            <input type="password" id="password" name="password" required>
+        <div class="checkbox-container">
+            <input type="checkbox" id?="show-password" onclick="togglePassword()">Passwort anzeigen </input>
+        </div>
+            <button type="submit" value="Einloggen">Einloggen</button>
+    </div>
+</form>
 
-// Verbindung überprüfen
-if ($conn->connect_error) {
-    // Bei Verbindungsfehler umleiten und Fehlermeldung senden
-    header("Location: login.html?error=Verbindung zur Datenbank fehlgeschlagen.");
-    exit();
-}
-
-// Benutzereingaben erhalten
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $inputUsername = $_POST['username'];
-    $inputPassword = $_POST['password'];
-
-    // SQL-Abfrage zum Überprüfen der Anmeldedaten
-    $sql = "SELECT * FROM deine_tabelle WHERE Username = ?";
-    $stmt = $conn->prepare($sql);
-    
-    if ($stmt) { // Überprüfen, ob das Statement korrekt erstellt wurde
-        $stmt->bind_param("s", $inputUsername);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        // Überprüfen, ob der Benutzer existiert
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-            
-            // Passwort überprüfen (wenn gespeichert als Hash)
-            if (password_verify($inputPassword, $user['Password'])) {
-                // Anmeldedaten korrekt, weiterleiten zu main.html
-                header("Location: main.html");
-                exit();
-            } else {
-                // Ungültige Anmeldedaten, umleiten und Fehlermeldung senden
-                header("Location: login.html?error=Ungültige Anmeldedaten.");
-                exit();
-            }
-        } else {
-            // Ungültige Anmeldedaten, umleiten und Fehlermeldung senden
-            header("Location: login.html?error=Ungültige Anmeldedaten.");
-            exit();
-        }
-
-        $stmt->close(); // Statement schließen
-    } else {
-        // Fehler beim Vorbereiten des Statements
-        header("Location: login.html?error=Fehler beim Vorbereiten der Abfrage.");
-        exit();
-    }
-}
-
-// Verbindung schließen
-$conn->close();
-?>
-
+</body>
+</html>
