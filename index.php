@@ -12,6 +12,10 @@
 </head>
 <body>
     <!------------------------------------------------------ ANFANG CREATETODO FORM ------------------------------------------------------>
+    <?php
+        include("sql.php");
+        getUser("Test","Test2");
+    ?>
     <div class="Form_Popup" id="myForm">
         <form class="Form_Container">
             <div class="Form_Header">

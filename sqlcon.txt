@@ -1,0 +1,2 @@
+export TURSO_DATABASE_URL="libsql://todolist-huddinii.turso.io"
+export TURSO_AUTH_TOKEN="eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzA4MzE4NDMsImlkIjoiNjQyZGE4ODMtODhkMy00MmNhLTkwZDAtYWVjNmRhMmYzMmJiIn0.rQcawjmhN8AU3R01pj_uqWJYXmcpMFR9S8Gi5wP07oIB6mJ7TgjXzkWdiweSoFvW1N2jg9usEuw2LY3T3AvfCw"
