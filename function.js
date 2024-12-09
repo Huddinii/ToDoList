@@ -32,12 +32,25 @@ function changeNav() {
     console.log("dropped:", data);
   }
 
-  function OpenPopup() {
+
+  let currentAbteilung = '';
+
+  function OpenPopup(abteilung) {
+
+
     document.getElementById("myForm").style.display = "block";
     // document.getElementById("ScreenWrapperID").style.pointerEvents = "none";
     const ScreenWrapper = document.getElementsByClassName("ScreenWrapper")[0]
     ScreenWrapper.style.pointerEvents = "none";
     ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    const inputField = document.getElementById("text_input");
+    const datetField = document.getElementById("date_input");
+    const biginputField = document.getElementById("big_text_input");
+    inputField.value = ''; // Eingabefeld leeren
+    datetField.value = ''; // Eingabefeld leeren
+    biginputField.value = ''; // Eingabefeld leeren
+    currentAbteilung = abteilung;
+    console.log(currentAbteilung);
     
   }
 
@@ -60,8 +73,11 @@ function changeNav() {
         newItem.textContent = myInput;
     
         // Füge das neue Element standardmäßig in die "Medium" Kategorie ein
-        document.getElementById("Medium").appendChild(newItem);
-        console.log("Test");
+        var Catergorie = document.getElementById("PriorityElement");
+        // console.log(Catergorie);
+        document.getElementById(currentAbteilung).appendChild(newItem);
+        console.log(Catergorie);
   
         closeFrom();
   }
+

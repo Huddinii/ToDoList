@@ -1,0 +1,33 @@
+Array
+(
+    [DOCUMENT_ROOT] => /workspaces/ToDoList
+    [REMOTE_ADDR] => ::1
+    [REMOTE_PORT] => 38290
+    [SERVER_SOFTWARE] => PHP 8.0.30 Development Server
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [SERVER_NAME] => localhost
+    [SERVER_PORT] => 8000
+    [REQUEST_URI] => /test.php
+    [REQUEST_METHOD] => GET
+    [SCRIPT_NAME] => /test.php
+    [SCRIPT_FILENAME] => /workspaces/ToDoList/test.php
+    [PHP_SELF] => /test.php
+    [HTTP_HOST] => 127.0.0.1:8000
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [HTTP_SEC_CH_UA] => "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"
+    [HTTP_SEC_CH_UA_MOBILE] => ?0
+    [HTTP_SEC_CH_UA_PLATFORM] => "Windows"
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+    [HTTP_SEC_FETCH_SITE] => same-origin
+    [HTTP_SEC_FETCH_MODE] => navigate
+    [HTTP_SEC_FETCH_USER] => ?1
+    [HTTP_SEC_FETCH_DEST] => document
+    [HTTP_REFERER] => http://127.0.0.1:8000/
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, br, zstd
+    [HTTP_ACCEPT_LANGUAGE] => de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7
+    [REQUEST_TIME_FLOAT] => 1733751226.7761
+    [REQUEST_TIME] => 1733751226
+)
