@@ -10,3 +10,7 @@ function togglePassword() {
 function showAlert(message) {
     alert(message);
 }
+
+function login() {
+    window.location.href = "index.php"; // Relativer Pfad zur neuen Seite
+}

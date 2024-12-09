@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="sidbarstyles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="function.js"></script>
+    <script src="drag and drop.js"></script>
 
 </head>
-
 <body>
+    <!------------------------------------------------------ ANFANG CREATETODO FORM ------------------------------------------------------>
     <div class="Form_Popup" id="myForm">
         <form class="Form_Container">
             <div class="Form_Header">
@@ -35,15 +36,16 @@
             </div>
         </form>
     </div>
-
+    <!------------------------------------------------------ ENDE CREATETODO FORM ------------------------------------------------------>
 
     <div class="ScreenWrapper" id="ScreenWrapperID">
-        <!-- <div class="header"> -->
+<!------------------------------------------------------ Header ------------------------------------------------------>
         <header>
             <h1>To Do Liste</h1>
-            <button class="headerbtn"><i class="fa fa-sign-out" aria-hidden="true"></i></button>
+            <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
+            <button class="headerbtn" id="log_out"><i class="fa fa-sign-out" aria-hidden="true" onclick="Logout()"></i></button>
         </header>
-        <!-- </div> -->
+<!------------------------------------------------------ Sidebar ------------------------------------------------------>
         <div class="ContentWrapper">
             <div class="sidebar">
                 <button class="openbtn" onclick="changeNav()">&#9776;</button>
@@ -51,10 +53,10 @@
                     <a href="#">About</a>
                     <a href="sortable.html">Sortable</a>
                     <a href="#">Test</a>
-                    <a href="Impressum.html">Impressum</a>
+                    <a href="Impressum.php">Impressum</a>
                 </div>
             </div>
-
+<!------------------------------------------------------ Main ------------------------------------------------------>
             <div class="main">
                 <h2>ProjectName</h2>
                 <div class="PriorityCategories">
@@ -80,11 +82,11 @@
                     <div class="PriorityElement" id="Low" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <h3>Low</h3>
                         <button class="NewEntry" value="Low" onclick="OpenPopup('Low')">New Entry</button>
-
                         <!-- <button class="addElement"></button> -->
                     </div>
                 </div>
             </div>
+<!------------------------------------------------------ Ende Main ------------------------------------------------------>      
         </div>
     </div>
 </body>

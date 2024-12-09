@@ -1,10 +1,11 @@
 header{
-    background-color: grey;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-  }
+  background-color: #844484;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  height: 8%;
+}
   
 
   
@@ -33,7 +34,7 @@ header{
   h1{
     color: black;
     font-family: Arial;
-    margin: 0;
+    margin: auto;
   }
   h2{
     font-family: Arial;
@@ -46,15 +47,15 @@ header{
   }
   
   .headerbtn {
-    font-size:  20px;
+    font-size:  2rem;
     cursor: pointer;
-    background-color: red;
-    padding: 10px 15px;
+    background-color: transparent;
+    padding: 1%;
     border: none;
   }
   
   .headerbtn:hover {
-    background-color: salmon;
+    background-color: #855585;
   }
   
     

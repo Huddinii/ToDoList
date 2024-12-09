@@ -2,35 +2,15 @@
 function changeNav() {
   var sidebarElements = document.getElementById("sidebarelements")
   if (sidebarElements.style.display === "none"){
+    setTimeout(() => {
     sidebarElements.style.display = "block";
+  }, 10);
   } else {
+    setTimeout(() => {
     sidebarElements.style.display = "none";
+  }, 10);
   }
 }
-  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-
-  function allowDrop(ev) {
-    ev.preventDefault();
-  }
-  
-  function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-    console.log("dragging:", ev.target.id);
-  }
-  
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    var target = ev.target;
-  
-    // Überprüfen, ob das Drop-Ziel eine Kategorie ist oder ein leeres Ziel enthält
-    while (!target.classList.contains("PriorityElement")) {
-      target = target.parentNode;
-    }
-    // Füge das gezogene Element in die Ziel-Kategorie ein
-    target.appendChild(document.getElementById(data));
-    console.log("dropped:", data);
-  }
 
 
   let currentAbteilung = '';
@@ -81,3 +61,6 @@ function changeNav() {
         closeFrom();
   }
 
+  function Logout() {
+    window.location.href = "login.php"; // Relativer Pfad zur neuen Seite
+}

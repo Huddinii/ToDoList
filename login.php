@@ -5,9 +5,6 @@
     <script src="loginfunctions.js"></script>
 </head>
 <body>
-    <?php
-    echo "Hello World";
-    ?>
 
     <div class="login-container">
         <h2>Login</h2>
@@ -19,7 +16,7 @@
         <div class="checkbox-container">
             <input type="checkbox" id?="show-password" onclick="togglePassword()">Passwort anzeigen </input>
         </div>
-            <button type="submit" value="Einloggen">Einloggen</button>
+            <button type="submit" value="Einloggen" onclick="login()">Einloggen</button>
     </div>
 </form>
 
