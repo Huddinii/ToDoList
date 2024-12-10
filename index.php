@@ -13,8 +13,8 @@
 <body>
     <!------------------------------------------------------ ANFANG CREATETODO FORM ------------------------------------------------------>
     <?php
-        include("sql.php");
-        getUser("Test","Test2");
+        // include("sql.php");
+        // getUser("Test","Test2");
     ?>
     <div class="Form_Popup" id="myForm">
         <form class="Form_Container">
@@ -55,7 +55,7 @@
                 <button class="openbtn" onclick="changeNav()">&#9776;</button>
                 <div id="sidebarelements">
                     <a href="#">About</a>
-                    <a href="sortable.html">Sortable</a>
+                    <!-- <a href="sortable.html">Sortable</a> -->
                     <a href="#">Test</a>
                     <a href="Impressum.php">Impressum</a>
                 </div>
