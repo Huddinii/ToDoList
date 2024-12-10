@@ -100,10 +100,10 @@ class Database
      * @param bool $webpki Use Webpki (default: false)
      */
     public function __construct(
-        string $path = null,
-        string $url = null,
+        string $path,
+        string $url,
         #[\SensitiveParameter]
-        string $authToken = null,
+        string $authToken,
         #[\SensitiveParameter]
         ?string $encryptionKey = null,
         int $syncInterval = 0,
