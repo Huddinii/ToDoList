@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c323a6b9dc3c6df7a3e7a587b227c2cb",
+    "content-hash": "17da8b0b13dc88e4a18e8747f65d3da3",
     "packages": [
         {
             "name": "turso/libsql",
-            "version": "v0.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tursodatabase/libsql-php.git",
-                "reference": "e36391f539f8cbcb2b52e77650acd50ac4c1f7a7"
+                "reference": "66e111e93ea3c7a427f4a5f5fe1efad0f3a87c31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tursodatabase/libsql-php/zipball/e36391f539f8cbcb2b52e77650acd50ac4c1f7a7",
-                "reference": "e36391f539f8cbcb2b52e77650acd50ac4c1f7a7",
+                "url": "https://api.github.com/repos/tursodatabase/libsql-php/zipball/66e111e93ea3c7a427f4a5f5fe1efad0f3a87c31",
+                "reference": "66e111e93ea3c7a427f4a5f5fe1efad0f3a87c31",
                 "shasum": ""
             },
             "require": {
@@ -28,6 +28,7 @@
                 "friendsofphp/php-cs-fixer": "^3.64",
                 "phpunit/phpunit": "^11"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -51,15 +52,17 @@
             "description": "libSQL bindings for PHP",
             "support": {
                 "issues": "https://github.com/tursodatabase/libsql-php/issues",
-                "source": "https://github.com/tursodatabase/libsql-php/tree/v0.1.1"
+                "source": "https://github.com/tursodatabase/libsql-php/tree/master"
             },
-            "time": "2024-10-25T18:57:47+00:00"
+            "time": "2024-11-05T00:11:24+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "turso/libsql": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {},

@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "turso/libsql",
-            "version": "v0.1.1",
-            "version_normalized": "0.1.1.0",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tursodatabase/libsql-php.git",
-                "reference": "e36391f539f8cbcb2b52e77650acd50ac4c1f7a7"
+                "reference": "66e111e93ea3c7a427f4a5f5fe1efad0f3a87c31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tursodatabase/libsql-php/zipball/e36391f539f8cbcb2b52e77650acd50ac4c1f7a7",
-                "reference": "e36391f539f8cbcb2b52e77650acd50ac4c1f7a7",
+                "url": "https://api.github.com/repos/tursodatabase/libsql-php/zipball/66e111e93ea3c7a427f4a5f5fe1efad0f3a87c31",
+                "reference": "66e111e93ea3c7a427f4a5f5fe1efad0f3a87c31",
                 "shasum": ""
             },
             "require": {
@@ -23,7 +23,8 @@
                 "friendsofphp/php-cs-fixer": "^3.64",
                 "phpunit/phpunit": "^11"
             },
-            "time": "2024-10-25T18:57:47+00:00",
+            "time": "2024-11-05T00:11:24+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -48,7 +49,7 @@
             "description": "libSQL bindings for PHP",
             "support": {
                 "issues": "https://github.com/tursodatabase/libsql-php/issues",
-                "source": "https://github.com/tursodatabase/libsql-php/tree/v0.1.1"
+                "source": "https://github.com/tursodatabase/libsql-php/tree/master"
             },
             "install-path": "../turso/libsql"
         }
