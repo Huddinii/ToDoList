@@ -11,10 +11,10 @@
 
 </head>
 <body>
-    <!------------------------------------------------------ ANFANG CREATETODO FORM ------------------------------------------------------>
+    <!------------------------------------------------------ CREATETODO FORM ------------------------------------------------------>
     <?php
-        include("sql.php");
-        getUser("Test","Test2");
+        // include("sql.php");
+        // getUser("Test","Test2");
     ?>
     <div class="Form_Popup" id="myForm">
         <form class="Form_Container">
@@ -23,7 +23,7 @@
                 <button type="button"class="CloseForm" onclick="closeFrom()">X</button>
             </div>
             <div class="div_text_date">
-                <input type="text" placeholder="Neuer Eintrag" required="required" id="text_input">
+                <input type="text" placeholder="Neuer Eintrag" required id="text_input">
                 <input type="date" id="date_input">
             </div>
             <!-- <div class="div_time">
@@ -40,18 +40,22 @@
             </div>
         </form>
     </div>
-    <!------------------------------------------------------ ENDE CREATETODO FORM ------------------------------------------------------>
-
+ <!------------------------------------------------------ ScreenWrapper ------------------------------------------------------>
     <div class="ScreenWrapper" id="ScreenWrapperID">
 <!------------------------------------------------------ Header ------------------------------------------------------>
         <header>
-            <button class="headerbtn" id="About_Us" onclick="Impressum()">About us</button> 
+            <div class="headerbutton_left">
+                <button class="headerbtn" id="About_Us" onclick="Impressum()">About us</button>
+            </div> 
             <h1>To Do Liste</h1>
-            <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
-            <button class="headerbtn" id="log_out"><i class="fa fa-sign-out" aria-hidden="true" onclick="Logout()"></i></button>
+            <div class="headerbuttons_right">
+                <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
+                <button class="headerbtn" id="log_out"><i class="fa fa-sign-out" aria-hidden="true" onclick="Logout()"></i></button>
+            </div>
         </header>
-<!------------------------------------------------------ Sidebar ------------------------------------------------------>
+<!------------------------------------------------------ ContentWrapper ------------------------------------------------------>
         <div class="ContentWrapper">
+<!------------------------------------------------------ Sidebar ------------------------------------------------------>
             <div class="sidebar">
                 <button class="openbtn" onclick="changeNav()">&#9776;</button>
                 <div id="sidebarelements">
@@ -59,6 +63,8 @@
                     <!-- <a href="sortable.html">Sortable</a> -->
                     <a href="#">Test</a>
                     <a href="Impressum.php">Impressum</a>
+
+                    <div class="footer"><button class="FooterButton">Neue To Do</button></div>
                 </div>
             </div>
 <!------------------------------------------------------ Main ------------------------------------------------------>
@@ -72,10 +78,10 @@
                         <button class="NewEntry" value="High" onclick="OpenPopup('High')">New Entry</button>
                         </div>
                         <div class="PriorityArea" id="High" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <div id="item1" class="item" draggable="true" ondragstart="drag(event)"><p>test1</p><button class="EditItem"><i class="fa fa-eye" aria-hidden="true"></i></button> </div>
+                        <!-- <div id="item1" class="item" draggable="true" ondragstart="drag(event)"><p>test1</p><button class="EditItem"><i class="fa fa-eye" aria-hidden="true"></i></button> </div>
                         <div id="item2" class="item" draggable="true" ondragstart="drag(event)">test 2<button class="EditItem" type="button"></button></div>
                         <div id="item3" class="item" draggable="true" ondragstart="drag(event)">test 3</div>
-                        <div id="item4" class="item" draggable="true" ondragstart="drag(event)">test 4</div>
+                        <div id="item4" class="item" draggable="true" ondragstart="drag(event)">test 4</div> -->
                         </div>
                     </div>
 
@@ -105,7 +111,9 @@
             </div>
 <!------------------------------------------------------ Ende Main ------------------------------------------------------>      
         </div>
+<!------------------------------------------------------ Ende Contentwrapper ------------------------------------------------------>  
     </div>
+<!------------------------------------------------------ Ende Screenwrapper ------------------------------------------------------>  
 </body>
 
 </html>

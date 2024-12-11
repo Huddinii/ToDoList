@@ -2,20 +2,23 @@
 <html>
 <body>
     <head>
-        <link rel="stylesheet" href="Impressumstyles.css"/>
+        <link rel="stylesheet" href="styles.css"/>
         <link rel="stylesheet" href="sidbarstyles.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="function.js"></script>
     </head>
 </body>
 <div class="ScreenWrapper">
-    <div class="header">
-        <header>
+<header>
+            <div class="headerbutton_left">
+                <button class="headerbtn" id="About_Us" onclick="Impressum()">About us</button>
+            </div> 
             <h1>To Do Liste</h1>
-            <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
-            <button class="headerbtn" id="log_out"><i class="fa fa-sign-out" aria-hidden="true" onclick="Logout()"></i></button>
+            <div class="headerbuttons_right">
+                <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
+                <button class="headerbtn" id="log_out"><i class="fa fa-sign-out" aria-hidden="true" onclick="Logout()"></i></button>
+            </div>
         </header>
-    </div>
     <div class="ContentWrapper">
         <div class="sidebar">
             <button class="openbtn" onclick="changeNav()">&#9776;</button>

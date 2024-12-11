@@ -13,6 +13,7 @@ function changeNav() {
 }
 
 
+
   let currentAbteilung = '';
 
   function OpenPopup(abteilung) {
@@ -31,7 +32,11 @@ function changeNav() {
     biginputField.value = ''; // Eingabefeld leeren
     currentAbteilung = abteilung;
     console.log(currentAbteilung);
-    
+    const buttons = document.querySelectorAll(".ScreenWrapper button");
+    buttons.forEach(button => {
+      button.disabled = true; // Deaktiviert Buttons
+    }); 
+
   }
 
   function closeFrom() {
@@ -39,6 +44,10 @@ function changeNav() {
     const ScreenWrapper = document.getElementsByClassName("ScreenWrapper")[0]
     ScreenWrapper.style.pointerEvents = "";
     ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0)";
+    const buttons = document.querySelectorAll(".ScreenWrapper button");
+    buttons.forEach(button => {
+      button.disabled = false; // Deaktiviert Buttons
+    });
   }
 
   function createToDo() {
@@ -49,16 +58,36 @@ function changeNav() {
         newItem.className = "item";
         newItem.draggable = true;
         newItem.ondragstart = drag;
-        newItem.id = "item5"; // Eindeutige ID vergeben
+        newItem.id = "item" + Date.now(); // Eindeutige ID vergeben
         newItem.textContent = myInput;
+      
+        // Button erstellen
+        var newButton = document.createElement("button");
+        newButton.className = "item-button";
+      
+        // Font Awesome Icon hinzufügen
+        var icon = document.createElement("i");
+        icon.className = "fa fa-trash"; // Font Awesome Klassen für das Icon
+        newButton.appendChild(icon);
+      
+        // Button Funktionalität definieren
+        newButton.onclick = function() {
+          newItem.remove(); // Entfernt das Div, wenn der Button geklickt wird
+        };
+        
+        if(myInput === "" ){
+          alert("Text Fehlt");
+        }
+        else{
+          newItem.appendChild(newButton);
     
-        // Füge das neue Element standardmäßig in die "Medium" Kategorie ein
-        var Catergorie = document.getElementById("PriorityArea");
-        // console.log(Catergorie);
-        document.getElementById(currentAbteilung).appendChild(newItem);
-        console.log(Catergorie);
-  
+          // Füge das neue Element standardmäßig in die "Medium" Kategorie ein
+          var Catergorie = document.getElementById("PriorityArea");
+          // console.log(Catergorie);
+          document.getElementById(currentAbteilung).appendChild(newItem);
+          console.log(Catergorie);
         closeFrom();
+        }
   }
 
   function Logout() {

@@ -6,6 +6,42 @@ header{
   position: sticky;
   height: 8%;
 }
+.headerbuttons_right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.headerbuttons_right .headerbtn {
+  font-size: 2.5rem unset;
+  padding: 0px 1rem;
+
+}
+.headerbuttons_right .headerbtn:hover {
+  height: 100%;
+  width: 100%;
+}
+.headerbutton_left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.headerbutton_left .headerbtn:hover{
+  height: 100%;
+  width: 100%;
+}
+
+.headerbtn {
+  font-size:  2rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.headerbtn:hover {
+  background-color: #855585;
+}
+
 
 
 .ScreenWrapper{
@@ -29,11 +65,11 @@ body{
   transition: 0.5s;
 }
 
-
 h1{
   color: black;
   font-family: Arial;
-  margin: auto;
+  margin-top: auto;
+  /* transform: translate(-50%, -50%); */
 }
 h2{
   font-family: Arial;
@@ -45,21 +81,9 @@ h3{
 
 }
 
-.headerbtn {
-  font-size:  2rem;
-  cursor: pointer;
-  background-color: transparent;
-  padding: 1%;
-  border: none;
-}
-/* #About_Us {
-  font-size: 1.5rem;
-
-} */
-
-
-.headerbtn:hover {
-  background-color: #855585;
+p{
+  font-family: Arial;
+  padding-left: 15px;
 }
 
   
