@@ -53,7 +53,7 @@ function changeNav() {
         newItem.textContent = myInput;
     
         // Füge das neue Element standardmäßig in die "Medium" Kategorie ein
-        var Catergorie = document.getElementById("PriorityElement");
+        var Catergorie = document.getElementById("PriorityArea");
         // console.log(Catergorie);
         document.getElementById(currentAbteilung).appendChild(newItem);
         console.log(Catergorie);
@@ -63,4 +63,8 @@ function changeNav() {
 
   function Logout() {
     window.location.href = "login.php"; // Relativer Pfad zur neuen Seite
+}
+
+function Impressum() {
+  window.location.href = "Impressum.php"; // Relativer Pfad zur neuen Seite
 }

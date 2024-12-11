@@ -42,10 +42,14 @@ header{
   
   h3{
     font-family: Arial;
-    padding: 10px;
+    padding-left: 10px;
   
   }
-  
+  p{
+    font-family: Arial;
+    padding-left: 15px;
+  }
+
   .headerbtn {
     font-size:  2rem;
     cursor: pointer;

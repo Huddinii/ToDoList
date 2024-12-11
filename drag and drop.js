@@ -1,4 +1,4 @@
-document.querySelectorAll('.PriorityElement .header, .PriorityElement .button').forEach(element => {
+document.querySelectorAll('.PriorityHeader').forEach(element => {
   element.addEventListener('dragstart', function(ev) {
     ev.preventDefault(); // Verhindert das Ziehen dieser Elemente
     console.log("Drag über Header oder Button verhindert.");
@@ -19,7 +19,7 @@ function allowDrop(ev) {
     const draggedElement = document.getElementById(data);
 
     let target = ev.target;
-    while (target && !target.classList.contains("PriorityElement")) {
+    while (target && !target.classList.contains("PriorityArea")) {
       target = target.parentNode;
     }
 
@@ -75,6 +75,6 @@ function allowDrop(ev) {
 
 
   // Event-Listener für alle Kinder innerhalb des Containers, um das Verschieben der anderen Elemente zu ermöglichen
-  document.querySelectorAll('.PriorityElement div').forEach(element => {
+  document.querySelectorAll('.PriorityArea div').forEach(element => {
     element.addEventListener('dragover', onDragOver);
   });
