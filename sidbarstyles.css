@@ -5,7 +5,7 @@
     left: 0;
     background-color: #363636; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    transition: all 1s ease-in; /* 0.5 second transition effect to slide in the sidebar */
+    transition: block 1s ease-in; /* 0.5 second transition effect to slide in the sidebar */
     display: table-cell;
     vertical-align: top;
   }
@@ -21,7 +21,7 @@
     font-size: 25px;
     color: #FFFFFF;
     display: block;
-    transition: 0.3s;
+    transition: all 0.05s ease-in;
     max-width: 250px;
   }
   
@@ -55,8 +55,11 @@
   }
 
   .openbtn:hover {
-    background-color: #444;
+    background-color: #555;
   }
+ a:hover {
+  background-color: #444;
+}
 
 
 .footer {

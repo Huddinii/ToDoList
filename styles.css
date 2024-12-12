@@ -187,7 +187,7 @@ background-color: lightblue;
 
 }
 
-.PriorityCategories .PriorityElement .item {
+/* .PriorityCategories .PriorityElement .item {
 
   display: flex;
   justify-content: space-between;
@@ -200,7 +200,7 @@ background-color: lightblue;
   font-family:  Arial;
   margin: 5px 8px;
   overflow: hidden;
-}
+} */
 
 .PriorityCategories .PriorityElement .PriorityArea .item {
 
@@ -217,13 +217,16 @@ background-color: lightblue;
   overflow: hidden;
 }
 
+.PriorityCategories .PriorityElement .PriorityArea .item:hover {
+  box-shadow: 2px 2px lightgrey;
+}
 
 
 
 
-.PriorityCategories .PriorityElement .item.drag-activ {
-  border: 1px solid #e1c178;
-  background-color: #fff;
+.PriorityCategories .PriorityElement .PriorityArea .item.drag-activ {
+  border: 2px solid #000;
+  background-color: darkmagenta;
 }
 
 .PriorityCategories .PriorityElement.hovererd {

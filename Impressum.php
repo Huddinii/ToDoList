@@ -31,6 +31,8 @@
             </div>
         </div>
         <div class="main">
+            <h2>Über uns</h2>
+            <p>Dies ist unser To Do Listen Projekt für BTS.</p>
             <h2>Impressum</h2>
             <h3>Kontakt</h3>
             <p>
