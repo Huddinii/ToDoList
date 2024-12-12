@@ -20,7 +20,7 @@
         <form class="Form_Container">
             <div class="Form_Header">
                 <h1>Neuer To Do</h1>
-                <button type="button"class="CloseForm" onclick="closeFrom()">X</button>
+                <button type="button"class="CloseForm" onclick="closeFrom()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
             </div>
             <div class="div_text_date">
                 <input type="text" placeholder="Neuer Eintrag" required id="text_input">

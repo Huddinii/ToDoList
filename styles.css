@@ -12,14 +12,21 @@ header{
   height: 100%;
 }
 .headerbuttons_right .headerbtn {
-  font-size: 2.5rem unset;
+  /* font-size: 10% unset; */
   padding: 0px 1rem;
 
 }
+
 .headerbuttons_right .headerbtn:hover {
   height: 100%;
   width: 100%;
 }
+
+.headerbuttons_right .headerbtn i{
+ font-size: 100%;
+
+}
+
 .headerbutton_left {
   display: flex;
   align-items: center;
@@ -67,22 +74,24 @@ body{
 
 h1{
   color: black;
-  font-family: Arial;
+  font-family: sans-serif;
   margin-top: auto;
   /* transform: translate(-50%, -50%); */
+  align-items: center;
 }
 h2{
-  font-family: Arial;
+  font-family: sans-serif;
 }
 
 h3{
-  font-family: Arial;
+  font-family: sans-serif;
   padding: 10px;
+  margin-top: 5px;
 
 }
 
 p{
-  font-family: Arial;
+  font-family: sans-serif;
   padding-left: 15px;
 }
 
@@ -129,6 +138,8 @@ p{
   margin: 0px 8px;
 }
 
+
+
 .PriorityCategories{
   width: 100%;
   height: 80%;
@@ -157,6 +168,7 @@ height: 100%;
   flex-direction: column;
   border: 2px solid black;
   border-radius: 10px;
+  box-shadow: 3px 3px 2px 2px #888;
 }
 .item:hover{
 background-color: lightblue;
@@ -212,13 +224,13 @@ background-color: lightblue;
   border: 1px solid #bbb;
   border-radius: 5px;
   font-size: 15px;
-  font-family:  Arial;
+  font-family:  sans-serif;
   margin: 5px 8px;
   overflow: hidden;
 }
 
 .PriorityCategories .PriorityElement .PriorityArea .item:hover {
-  box-shadow: 2px 2px lightgrey;
+  box-shadow: 1px 1px 1px 1px lightgrey;
 }
 
 

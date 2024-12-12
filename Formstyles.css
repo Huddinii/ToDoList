@@ -10,6 +10,7 @@
     max-height: 50%;
     transform: translate(-50%,-50%);
     transition: opacity 0.3s ease;
+    box-shadow: 4px 4px 4px 4px #888;
   }
 
   .Form_Container {
@@ -26,13 +27,17 @@
   }
   .CloseForm {
     border: none;
+    font-size: 30px;
     background-color: white;
 
   }
 
-  .CloseForm:hover {
+  .CloseForm i:hover {
     background-color: lightgray;
+
   }
+
+
   .div_time {
     justify-content: space-between;
     display: flex;

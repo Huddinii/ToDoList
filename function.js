@@ -24,7 +24,7 @@ function changeNav() {
     // document.getElementById("ScreenWrapperID").style.pointerEvents = "none";
     const ScreenWrapper = document.getElementsByClassName("ScreenWrapper")[0]
     ScreenWrapper.style.pointerEvents = "none";
-    ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
     const inputField = document.getElementById("text_input");
     const datetField = document.getElementById("date_input");
     const biginputField = document.getElementById("big_text_input");
