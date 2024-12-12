@@ -45,6 +45,7 @@
     <div class="ScreenWrapper" id="ScreenWrapperID">
 <!------------------------------------------------------ Header ------------------------------------------------------>
         <header>
+            <button class="headerbtn" id="About_Us" onclick="Impressum()">About us</button> 
             <h1>To Do Liste</h1>
             <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
             <button class="headerbtn" id="log_out"><i class="fa fa-sign-out" aria-hidden="true" onclick="Logout()"></i></button>
@@ -65,28 +66,40 @@
                 <h2>ProjectName</h2>
                 <div class="PriorityCategories">
 
-                    <div class="PriorityElement" id="High" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="PriorityElement">
+                        <div class="PriorityHeader">
                         <h3>High</h3>
                         <button class="NewEntry" value="High" onclick="OpenPopup('High')">New Entry</button>
-                        <!-- <button class="addElement"></button> -->
-                        <div id="item1" class="item" draggable="true" ondragstart="drag(event)"><p>test1</p><button class="itemButton">...</button> </div>
-                        <div id="item2" class="item" draggable="true" ondragstart="drag(event)">test 2<button class="itemButton" type="button"></button></div>
+                        </div>
+                        <div class="PriorityArea" id="High" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div id="item1" class="item" draggable="true" ondragstart="drag(event)"><p>test1</p><button class="EditItem"><i class="fa fa-eye" aria-hidden="true"></i></button> </div>
+                        <div id="item2" class="item" draggable="true" ondragstart="drag(event)">test 2<button class="EditItem" type="button"></button></div>
                         <div id="item3" class="item" draggable="true" ondragstart="drag(event)">test 3</div>
                         <div id="item4" class="item" draggable="true" ondragstart="drag(event)">test 4</div>
+                        </div>
                     </div>
 
 
-                    <div class="PriorityElement" id="Medium" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="PriorityElement">
+                    <div class="PriorityHeader">
                         <h3>Medium</h3>
                         <button class="NewEntry" value="Medium" onclick="OpenPopup('Medium')">New Entry</button>
+                    </div>
+                    <div class="PriorityArea" id="Medium" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                    </div>
                         <!-- <button class="addElement"></button> -->
                     </div>
 
 
-                    <div class="PriorityElement" id="Low" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="PriorityElement">
+                    <div class="PriorityHeader">
                         <h3>Low</h3>
                         <button class="NewEntry" value="Low" onclick="OpenPopup('Low')">New Entry</button>
-                        <!-- <button class="addElement"></button> -->
+                        </div>
+                        <div class="PriorityArea"  id="Low" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                        </div>
                     </div>
                 </div>
             </div>
