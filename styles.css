@@ -1,5 +1,5 @@
 header{
-  background-color: #844484;
+  background-color: #0051ff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,6 +27,10 @@ header{
 
 }
 
+#About_Us {
+  font-weight: bold;
+
+}
 .headerbutton_left {
   display: flex;
   align-items: center;
@@ -46,7 +50,7 @@ header{
 }
 
 .headerbtn:hover {
-  background-color: #855585;
+  background-color: #3f7cff;
 }
 
 
@@ -169,9 +173,28 @@ height: 100%;
   border: 2px solid black;
   border-radius: 10px;
   box-shadow: 3px 3px 2px 2px #888;
+
 }
-.item:hover{
-background-color: lightblue;
+
+
+#High .item {
+  background-color: rgb(241, 107, 107);
+}
+#Medium .item {
+  background-color: rgb(255, 255, 160);
+}
+#Low .item {
+  background-color: rgb(130, 243, 130);
+}
+
+#High .item:hover {
+  background-color: rgb(240, 153, 153);
+}
+#Medium .item:hover {
+  background-color: lightyellow;
+}
+#Low .item:hover {
+  background-color: rgb(176, 243, 174);
 }
 
 
