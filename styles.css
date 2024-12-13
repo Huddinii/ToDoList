@@ -1,10 +1,12 @@
 header{
   background-color: #6656ff;
+  background-image: linear-gradient(to right, #6656ff, #413799);;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   height: 8%;
+  border-bottom: 1px solid;
 }
 .headerbuttons_right {
   display: flex;

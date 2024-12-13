@@ -3,12 +3,14 @@
     width: auto; /* 0 width - change this with JavaScript */
     z-index: 1; /* Stay on top */
     left: 0;
-    background-color: #363636; /* Black*/
+    background-color: #c7c1ff;
+    background-image: linear-gradient(to bottom,#c7c1ff,#978cff );
     overflow-x: hidden; /* Disable horizontal scroll */
     transition: all 1s ease-in; /* 0.5 second transition effect to slide in the sidebar */
     display: table-cell;
     max-width: 200px;
     vertical-align: top;
+    border: 1px solid;
   }
 .sidebar.active {
   opacity: 1;
@@ -16,11 +18,12 @@
 }
   /* The sidebar links */
   .sidebar a {
-    padding: 8px 8px 8px 32px;
+    padding: 4px 4px 4px 32px;
     text-decoration: none;
     font-family:  Arial;
     font-size: 25px;
-    color: #FFFFFF;
+    font-weight: bold;
+    color: black;
     display: block;
     transition: all 0.05s ease-in;
     width: 200px;
@@ -28,7 +31,10 @@
   
   /* When you mouse over the navigation links, change their color */
   .sidebar a:hover {
+    background-color: #c7c1ff; 
+    background-image: linear-gradient(to right,#d9d5ff,#978cff );
     color: #f1f1f1;
+    padding-left: 25%;
   }
   
   /* Position and style the close button (top right corner) */
@@ -44,24 +50,23 @@
   .openbtn {
     font-size: 15px;
     cursor: pointer;
-    background-color: #111;
+    background-color: #8fa5ff;
     color: white;
     padding: 5px 10px;
     border: 1px;
     border-style: solid;
     border-color: white;
     border-radius: 25%;
+    box-shadow: 2px 2px 1px 1px #635ba7;
     margin: 7px;
     left: 0;
   }
 
   .openbtn:hover {
-    background-color: #555;
+    background-color: #3f7cff;
+    box-shadow: 3px 3px 1px 1px #635ba7;
   }
- a:hover {
-  background-color: #444;
-  padding-left: 25%;
-}
+
 
 
 .footer {
@@ -74,15 +79,19 @@
   position: absolute;
   bottom: 0;
   font-family: Arial;
+  font-weight: bold;
   color: white;
   width: calc( sidebar );
   margin-bottom: 1%;
-  margin-left: 5px;
+  margin-left: 20px;
   padding: 5px 35px;
-  background-color: #363636;
+  background-color: #8fa5ff;
   border: solid 2px white;
+  border-radius: 20px;
+  box-shadow: 2px 2px 1px 1px #635ba7;
 }
 
 .FooterButton:hover {
-  background-color: #111;
+  background-color: #3f7cff;
+  box-shadow: 3px 3px 1px 1px #635ba7;
 }
