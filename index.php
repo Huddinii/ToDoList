@@ -48,15 +48,12 @@
                 <button class="headerbtn" id="About_Us" onclick="Impressum()">About us</button>
             </div> 
             <h1>To Do Liste</h1>
-            <?php if (isstet($_SESSION['userid'])): ?>
             <div class="headerbuttons_right">
                 <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
                 <button class="headerbtn" id="log_out"><i class="fa fa-sign-out" aria-hidden="true" onclick="Logout()"></i></button>
             </div>
-            <?php else: ?>
                 <button class="headerbtn" id="User">Sign in</button>
                 <button class="headerbtn" id="log_out">Log in</i></button>
-            <?php endif; ?>
         </header>
 <!------------------------------------------------------ ContentWrapper ------------------------------------------------------>
         <div class="ContentWrapper">
