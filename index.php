@@ -52,8 +52,6 @@
                 <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
                 <button class="headerbtn" id="log_out"><i class="fa fa-sign-out" aria-hidden="true" onclick="Logout()"></i></button>
             </div>
-                <button class="headerbtn" id="User">Sign in</button>
-                <button class="headerbtn" id="log_out">Log in</i></button>
         </header>
 <!------------------------------------------------------ ContentWrapper ------------------------------------------------------>
         <div class="ContentWrapper">
@@ -77,7 +75,7 @@
                     <div class="PriorityElement">
                         <div class="PriorityHeader">
                         <h3>High</h3>
-                        <button class="NewEntry" value="High" onclick="OpenPopup('High')">New Entry</button>
+                        <button class="NewEntry" value="High" onclick="OpenPopup('High')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                         </div>
                         <div class="PriorityArea" id="High" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <!-- <div id="item1" class="item" draggable="true" ondragstart="drag(event)"><p>test1</p><button class="EditItem"><i class="fa fa-eye" aria-hidden="true"></i></button> </div>
@@ -91,7 +89,7 @@
                     <div class="PriorityElement">
                     <div class="PriorityHeader">
                         <h3>Medium</h3>
-                        <button class="NewEntry" value="Medium" onclick="OpenPopup('Medium')">New Entry</button>
+                        <button class="NewEntry" value="Medium" onclick="OpenPopup('Medium')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                     </div>
                     <div class="PriorityArea" id="Medium" ondrop="drop(event)" ondragover="allowDrop(event)">
 
@@ -103,7 +101,7 @@
                     <div class="PriorityElement">
                     <div class="PriorityHeader">
                         <h3>Low</h3>
-                        <button class="NewEntry" value="Low" onclick="OpenPopup('Low')">New Entry</button>
+                        <button class="NewEntry" value="Low" onclick="OpenPopup('Low')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                         </div>
                         <div class="PriorityArea"  id="Low" ondrop="drop(event)" ondragover="allowDrop(event)">
 

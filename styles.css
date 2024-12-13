@@ -1,5 +1,5 @@
 header{
-  background-color: #0051ff;
+  background-color: #6656ff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,14 +12,20 @@ header{
   height: 100%;
 }
 .headerbuttons_right .headerbtn {
-  /* font-size: 10% unset; */
+  font-size: 2rem;
   padding: 0px 1rem;
-
+  background-color: #8fa5ff;
+  height: 87%;
+  margin: 0px 5px;
+  border: 2px solid;
+  border-radius: 100%;
+  box-shadow: 2px 2px 1px 1px #26205e;
 }
 
 .headerbuttons_right .headerbtn:hover {
-  height: 100%;
+  height: 87%;
   width: 100%;
+  box-shadow: 3px 3px 1px 1px #26205e;
 }
 
 .headerbuttons_right .headerbtn i{
@@ -35,15 +41,28 @@ header{
   display: flex;
   align-items: center;
   height: 100%;
+  width: 7%;
+}
+
+.headerbutton_left .headerbtn{
+ width: 100%;
+ height: 87%;
+ font-size: 1.5rem;
+ border: 2px solid;
+ border-radius: 40px;
+ margin-left: 4%;
+ background-color: #8fa5ff;
+ box-shadow: 2px 2px 1px 1px #26205e;
 }
 
 .headerbutton_left .headerbtn:hover{
-  height: 100%;
+  height: 85%;
   width: 100%;
+  box-shadow: 3px 3px 1px 1px #26205e;
 }
 
 .headerbtn {
-  font-size:  2rem;
+  font-size:  1rem;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -139,7 +158,18 @@ p{
 
 .NewEntry {
   font-family: Arial;
-  margin: 10px 8px;
+  font-size: 15px;
+  margin: 10px 30px;
+  padding: 10px 0px;
+  font-weight: bold;
+  box-shadow: 2px 2px 1px 1px rgb(105, 131, 139);
+  background-color: #8fa5ff;
+  border-radius: 20px;
+}
+.NewEntry:hover {
+  background-color: #3f7cff;
+  box-shadow: 3px 3px 1px 1px rgb(105, 131, 139);
+
 }
 
 
@@ -197,13 +227,13 @@ height: 100%;
 }
 
 #High .item:hover {
-  background-color: rgb(240, 153, 153);
+  background-color: rgb(241, 32, 32);
 }
 #Medium .item:hover {
-  background-color: lightyellow;
+  background-color: rgb(255, 255, 32);
 }
 #Low .item:hover {
-  background-color: rgb(176, 243, 174);
+  background-color: rgb(32, 243, 32);
 }
 
 
@@ -253,16 +283,17 @@ height: 100%;
   cursor: pointer;
   display: flex;
   padding: 0.5em;
-  border: 1px solid #bbb;
+  border: 1px solid;
   border-radius: 5px;
   font-size: 15px;
   font-family:  sans-serif;
   margin: 5px 8px;
   overflow: hidden;
+  box-shadow: 1px 1px 1px 1px rgb(97, 97, 97);
 }
 
 .PriorityCategories .PriorityElement .PriorityArea .item:hover {
-  box-shadow: 1px 1px 1px 1px lightgrey;
+  box-shadow: 2px 2px 1px 1px darkgrey;
 }
 
 
