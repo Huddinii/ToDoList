@@ -24,16 +24,16 @@ function getUser($username) {
     }
 }
 
-echo("Get the 1st row as an associative array:\n");
-print_r($result->fetchArray(SQLITE3_ASSOC));
-echo("\n");
+// echo("Get the 1st row as an associative array:\n");
+// print_r($result->fetchArray(SQLITE3_ASSOC));
+// echo("\n");
 
-echo("Get the next row as a numeric array:\n");
-print_r($result->fetchArray(SQLITE3_NUM));
-echo("\n");
+// echo("Get the next row as a numeric array:\n");
+// print_r($result->fetchArray(SQLITE3_NUM));
+// echo("\n");
 
-$result->finalize();
+// $result->finalize();
 
-$db->close();
+// $db->close();
 
 ?>
