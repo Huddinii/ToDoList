@@ -1,28 +1,28 @@
 <?php
+include("dbconnect.php");
 
+function createUser($username, $mail, $password) {
+    global $db;
+    $statement = $db->prepare('INSERT INTO "user" ("username","mail", "password")
+        VALUES (:uid, :mail, :password)');
+    $statement->bindValue(':uid', $username);
+    $statement->bindValue(':mail', $mail);
+    $statement->bindValue(':password', $password);
+    $statement->execute(); // you can reuse the statement with different values
+}
 
-$db = new SQLite3('test.sqlite', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
-$db -> enableExceptions(true);
-$db -> query('CREATE TABLE IF NOT EXISTS "user" (
-"id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-"user_id" VARCHAR NOT NULL UNIQUE,
-"password" VARCHAR
-)');
-
-
-
-$statement = $db->prepare('INSERT INTO "user" ("user_id", "password")
-    VALUES (:uid, :password)');
-$statement->bindValue(':uid', 'admin2');
-$statement->bindValue(':password', 'test321');
-$statement->execute(); // you can reuse the statement with different values
-
-
-$statement = $db->prepare('SELECT * FROM "user" WHERE "user_id" = ? AND "password" = ?');
-$statement->bindValue(1, 'admin2');
-$statement->bindValue(2, 'test321');
-$result = $statement->execute();
-
+function getUser($username) {
+    global $db;
+    $statement = $db->prepare('SELECT * FROM "user" WHERE "user_id" = ? AND "password" = ?');
+    $statement->bindValue(1, 'admin2');
+    $statement->bindValue(2, 'test321');
+    $result = $statement->execute();
+    if ($result === false) {
+        return false;
+    } else {
+        return $result;
+    }
+}
 
 echo("Get the 1st row as an associative array:\n");
 print_r($result->fetchArray(SQLITE3_ASSOC));
