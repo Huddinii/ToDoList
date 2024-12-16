@@ -55,8 +55,6 @@ if (!file_exists('sqlite.db')) {
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (project_id) REFERENCES project(id)
     )');
-} else {
-    $db = new SQLite3('sqlite.db', SQLITE3_OPEN_READWRITE);
-    $db -> enableExceptions(true);
-}
+    $db->close();
+} 
 ?>
