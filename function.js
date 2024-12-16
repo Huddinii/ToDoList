@@ -2,16 +2,50 @@
 
 function changeNav() {
   var sidebarElements = document.getElementById("sidebarelements")
+  var sidebar = document.getElementById('test1')
   if (sidebarElements.style.display === "none"){
     setTimeout(() => {
+    sidebar.style.width = '200px';
     sidebarElements.style.display = "block";
   }, 10);
   } else {
     setTimeout(() => {
+    sidebar.style.width = '50px';  
     sidebarElements.style.display = "none";
   }, 10);
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+const resizer = document.getElementById('test2');
+const sidebar = document.getElementById('test1');
+let isResizing = false;
+console.log("test");
+
+resizer.addEventListener('mousedown', (e) => {
+  isResizing = true;
+  document.body.style.cursor = 'ew-resize'; // Cursor ändern
+  console.log("angeklickt");
+  e.preventDefault();
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isResizing) return;
+  e.preventDefault();
+  // Berechnung der neuen Breite
+  const newWidth = e.clientX;
+  if (newWidth > 150 && newWidth < 600) { // Mindest- und Maximalbreite
+    sidebar.style.width = `${newWidth}px`;
+    console.log("bewegt");
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  isResizing = false;
+  document.body.style.cursor = 'default'; // Cursor zurücksetzen
+});
+});
+
 
 
 
@@ -64,7 +98,7 @@ function changeNav() {
       
         // Button erstellen
         var newButton = document.createElement("button");
-        newButton.className = "item-button";
+        newButton.className = "delete_button";
       
         // Font Awesome Icon hinzufügen
         var icon = document.createElement("i");

@@ -13,7 +13,7 @@
 <body>
     <!------------------------------------------------------ CREATETODO FORM ------------------------------------------------------>
     <?php
-        include("sqlite.php");
+        // include("sqlite.php");
         //getUser("Test","Test2");
     ?>
     <div class="Form_Popup" id="myForm">
@@ -56,16 +56,18 @@
 <!------------------------------------------------------ ContentWrapper ------------------------------------------------------>
         <div class="ContentWrapper">
 <!------------------------------------------------------ Sidebar ------------------------------------------------------>
-            <div class="sidebar">
-                <button class="openbtn" onclick="changeNav()">&#9776;</button>
-                <div id="sidebarelements">
-                    <a href="#">About</a>
+            <div class="sidebar" id="test1">
+                <div class="resizer" id=test2></div>
+                    <button class="openbtn" onclick="changeNav()">&#9776;</button>
+                    <div id="sidebarelements">
+                        <a href="#">About</a>
                     <!-- <a href="sortable.html">Sortable</a> -->
-                    <a href="#">Test</a>
-                    <a href="Impressum.php">Impressum</a>
+                        <a href="#">Test</a>
+                        <a href="Impressum.php">Impressum</a>
 
-                    <div class="footer"><button class="FooterButton">Neue To Do</button></div>
-                </div>
+                        <div class="footer"><button class="FooterButton">Neues Projekt</button></div>
+                    </div>
+
             </div>
 <!------------------------------------------------------ Main ------------------------------------------------------>
             <div class="main">
@@ -73,9 +75,9 @@
                 <div class="PriorityCategories">
 
                     <div class="PriorityElement">
-                        <div class="PriorityHeader">
+                        <div class="PriorityHeader"id="HeaderHigh">
                         <h3>High</h3>
-                        <button class="NewEntry" value="High" onclick="OpenPopup('High')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
+                        <button class="NewEntry" onclick="OpenPopup('High')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                         </div>
                         <div class="PriorityArea" id="High" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <!-- <div id="item1" class="item" draggable="true" ondragstart="drag(event)"><p>test1</p><button class="EditItem"><i class="fa fa-eye" aria-hidden="true"></i></button> </div>
@@ -87,9 +89,9 @@
 
 
                     <div class="PriorityElement">
-                    <div class="PriorityHeader">
+                    <div class="PriorityHeader"id="HeaderMedium">
                         <h3>Medium</h3>
-                        <button class="NewEntry" value="Medium" onclick="OpenPopup('Medium')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
+                        <button class="NewEntry" onclick="OpenPopup('Medium')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                     </div>
                     <div class="PriorityArea" id="Medium" ondrop="drop(event)" ondragover="allowDrop(event)">
 
@@ -99,9 +101,9 @@
 
 
                     <div class="PriorityElement">
-                    <div class="PriorityHeader">
+                    <div class="PriorityHeader"id="HeaderLow">
                         <h3>Low</h3>
-                        <button class="NewEntry" value="Low" onclick="OpenPopup('Low')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
+                        <button class="NewEntry" onclick="OpenPopup('Low')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                         </div>
                         <div class="PriorityArea"  id="Low" ondrop="drop(event)" ondragover="allowDrop(event)">
 

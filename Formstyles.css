@@ -9,7 +9,7 @@
     left:50%;
     max-height: 50%;
     transform: translate(-50%,-50%);
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
     box-shadow: 4px 4px 4px 4px #888;
   }
 
@@ -26,16 +26,24 @@
     margin-bottom: 2%;
   }
   .CloseForm {
-    border: none;
     font-size: 30px;
     background-color: white;
-
+    border: hidden;
   }
+
+  .CloseForm i {
+    box-shadow: 2px 2px 1px 1px #888;
+    border-radius: 50%;
+    padding:  0px 2px ;
+    box-sizing: border-box;
+  }
+
 
   .CloseForm i:hover {
     background-color: lightgray;
-    border-radius: 100%;
+    border-radius: 50%;
     padding:  0px 2px ;
+    box-shadow: 3px 3px 2px 2px #888;
   }
 
 
@@ -68,3 +76,17 @@
     margin-top: 2%;
 
   }
+.AddEntry {
+  border: solid 1px;
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 3px 5px;
+  box-shadow: 2px 2px 1px 1px #888;
+}
+
+.AddEntry:hover {
+ background-color: #eee;
+ box-shadow: 3px 3px 1px 1px #888;
+
+}
+

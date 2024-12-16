@@ -3,6 +3,10 @@
 <head>
     <link rel="stylesheet" href="loginstyles.css"/>
     <script src="loginfunctions.js"></script>
+    <?php
+    include("sqlite.php");
+    ?>
+
 </head>
 <body>
 
