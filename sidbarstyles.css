@@ -1,24 +1,37 @@
 /* The sidebar menu */
 .sidebar {
-    width: auto; /* 0 width - change this with JavaScript */
     z-index: 1; /* Stay on top */
     left: 0;
     background-color: #c7c1ff;
     background-image: linear-gradient(to bottom,#c7c1ff,#978cff );
-    overflow-x: hidden; /* Disable horizontal scroll */
-    transition: all 1s ease-in; /* 0.5 second transition effect to slide in the sidebar */
-    display: table-cell;
-    max-width: 200px;
-    vertical-align: top;
+    overflow-x: visible; /* Disable horizontal scroll */ /* 0.5 second transition effect to slide in the sidebar */
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 100%;
+    /* vertical-align: top; */
     border: 1px solid;
   }
 .sidebar.active {
   opacity: 1;
   transition: all 0.5s ease-in;
 }
+.resizer {
+  width: 5px;
+  background-color: transparent;
+  cursor: ew-resize; /* Horizontale Ziehen-Cursor */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+
+
   /* The sidebar links */
   .sidebar a {
-    padding: 4px 4px 4px 32px;
+    padding: 4px 4px 4px 4px;
     text-decoration: none;
     font-family:  Arial;
     font-size: 25px;
@@ -26,7 +39,7 @@
     color: black;
     display: block;
     transition: all 0.05s ease-in;
-    width: 200px;
+    /* width: 200px; */
   }
   
   /* When you mouse over the navigation links, change their color */
@@ -34,7 +47,7 @@
     background-color: #c7c1ff; 
     background-image: linear-gradient(to right,#d9d5ff,#978cff );
     color: #f1f1f1;
-    padding-left: 25%;
+    padding-left: 5%;
   }
   
   /* Position and style the close button (top right corner) */
@@ -82,9 +95,10 @@
   font-weight: bold;
   color: white;
   width: calc( sidebar );
-  margin-bottom: 1%;
-  margin-left: 20px;
-  padding: 5px 35px;
+  margin-bottom: 10px;
+  margin-left: 10%;
+  margin-right: 5%;
+  padding: 5px 18px;
   background-color: #8fa5ff;
   border: solid 2px white;
   border-radius: 20px;

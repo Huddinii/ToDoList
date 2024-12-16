@@ -1,6 +1,6 @@
 header{
   background-color: #6656ff;
-  background-image: linear-gradient(to right, #6656ff, #413799);;
+  background-image: linear-gradient(to right, #6656ff, #413799);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,12 +22,6 @@ header{
   border: 2px solid;
   border-radius: 100%;
   box-shadow: 2px 2px 1px 1px #26205e;
-}
-
-.headerbuttons_right .headerbtn:hover {
-  height: 87%;
-  width: 100%;
-  box-shadow: 3px 3px 1px 1px #26205e;
 }
 
 .headerbuttons_right .headerbtn i{
@@ -57,11 +51,6 @@ header{
  box-shadow: 2px 2px 1px 1px #26205e;
 }
 
-.headerbutton_left .headerbtn:hover{
-  height: 85%;
-  width: 100%;
-  box-shadow: 3px 3px 1px 1px #26205e;
-}
 
 .headerbtn {
   font-size:  1rem;
@@ -72,6 +61,9 @@ header{
 
 .headerbtn:hover {
   background-color: #3f7cff;
+  height: 87%;
+  width: 100%;
+  box-shadow: 3px 3px 1px 1px #26205e;
 }
 
 
@@ -88,13 +80,14 @@ html{
 body{
  height: 100%;
  /* top: 64; */
+ display: flex;
  margin: 0;
 }
 .ContentWrapper{
   display: table;
   height: 92%;
   width: 100%;
-  transition: 0.5s;
+  flex: 1;
 }
 
 h1{
@@ -163,14 +156,15 @@ p{
   font-size: 15px;
   margin: 10px 30px;
   padding: 10px 0px;
+  cursor: pointer;
   font-weight: bold;
-  box-shadow: 2px 2px 1px 1px rgb(105, 131, 139);
-  background-color: #8fa5ff;
+  /* box-shadow: 2px 2px 1px 1px rgb(116, 116, 116); */
+  background-color: #f8f8f8;
   border-radius: 20px;
 }
 .NewEntry:hover {
-  background-color: #3f7cff;
-  box-shadow: 3px 3px 1px 1px rgb(105, 131, 139);
+  background-color: #e2e2e2;
+  /* box-shadow: 3px 3px 1px 1px rgb(116, 116, 116); */
 
 }
 
@@ -189,7 +183,7 @@ p{
   display: flex;
   flex-direction: column;  
   border-bottom: 1px solid;
-  background-color: lightblue;
+  /* background-color: lightblue; */
   border-top-left-radius:  8px;
   border-top-right-radius: 8px;
 }
@@ -198,6 +192,39 @@ p{
   margin-bottom: 0px;
   align-self: center;
 }
+
+
+
+#HeaderHigh {
+  background-color: rgb(241, 107, 107);
+}
+#HeaderMedium {
+  background-color: rgb(255, 255, 160);
+}
+#HeaderLow {
+  background-color: rgb(130, 243, 130);
+}
+
+#HeaderHigh .NewEntry{
+  box-shadow: 2px 2px 1px 1px rgb(126, 59, 59);
+}
+#HeaderMedium .NewEntry{
+  box-shadow: 2px 2px 1px 1px rgb(78, 78, 31);
+}
+#HeaderLow .NewEntry{
+  box-shadow: 2px 2px 1px 1px rgb(63, 119, 63);
+}
+
+#HeaderHigh .NewEntry:hover{
+  box-shadow: 3px 3px 1px 1px rgb(126, 59, 59);
+}
+#HeaderMedium .NewEntry:hover{
+  box-shadow: 3px 3px 1px 1px rgb(116, 116, 46);
+}
+#HeaderLow .NewEntry:hover{
+  box-shadow: 3px 3px 1px 1px rgb(63, 119, 63);
+}
+
 
 .PriorityArea{
 width: 100%;
@@ -211,14 +238,14 @@ height: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 10px;
-  box-shadow: 3px 3px 2px 2px #888;
+  box-shadow: 4px 4px 3px 3px #888;
 
 }
 
 
-#High .item {
+/* #High .item {
   background-color: rgb(241, 107, 107);
 }
 #Medium .item {
@@ -236,7 +263,7 @@ height: 100%;
 }
 #Low .item:hover {
   background-color: rgb(32, 243, 32);
-}
+} */
 
 
 .PriorityCategories ul {
@@ -258,7 +285,7 @@ height: 100%;
   padding: 0px 10px;
 }
 .EditItem:hover{
-  background-color: rgb(66, 149, 177);
+  background-color: rgb(65, 65, 65);
   border-radius: 10%;
 
 }
@@ -295,13 +322,31 @@ height: 100%;
 }
 
 .PriorityCategories .PriorityElement .PriorityArea .item:hover {
+  background-color: rgb(226, 226, 226);
   box-shadow: 2px 2px 1px 1px darkgrey;
+}
+
+.PriorityCategories .PriorityElement .PriorityArea .item .delete_button {
+  background-color: rgb(255, 255, 255);
+  font-size: 17px;
+  border: 1px solid;
+  border-radius: 20px;
+  box-shadow: 2px 2px 1px 1px #888;
+  padding: 1px 8px;
+}
+.PriorityCategories .PriorityElement .PriorityArea .item .delete_button:hover {
+  background-color: rgb(255, 187, 187);
+  /* font-size: 18px; */
+  border: 1px solid;
+  border-radius: 20px;
+  box-shadow: 3px 3px 1px 1px #888;
+  padding: 1px 8px;
 }
 
 
 
 
-.PriorityCategories .PriorityElement .PriorityArea .item.drag-activ {
+.PriorityCategories .PriorityElement .PriorityArea .item:drag-activ {
   border: 2px solid #000;
   background-color: darkmagenta;
 }
