@@ -65,8 +65,8 @@ class DBConn
         $statement->bindValue(':email', $email);
 
         try {
-            $statement->execute();
-            $user = $statement->fetch(); // Benutzerdaten abrufen
+            $result = $statement->execute();
+            $user = $result->fetchArray(); // Benutzerdaten abrufen
 
             // Überprüfen, ob ein Benutzer mit dieser E-Mail existiert
             if (!$user) {
