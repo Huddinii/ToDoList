@@ -172,9 +172,9 @@ class DBConn
         $statement_user_team = $this -> db -> prepare('SELECT * FROM user_team ut  RIGHT JOIN team t WHERE ut.user_id = :uid');
         $statement_user_team ->bindValue(':uid', $User->get_id() );
         try {
-            $statement_user_team -> execute();
-            while ($row = $statement_user_team -> fetch(SQLITE3_ASSOC)) {
-            //Übergabe
+            $result = $statement_user_team -> execute();
+            while ($row = $result -> fetchArray(SQLITE3_ASSOC) != false) {
+                return $row;
             }
         }catch (PDOException $e) {
             return 'Datenbankfehler'. $e->getMessage();
@@ -186,9 +186,9 @@ class DBConn
         $statement_project = $this -> db -> prepare('SELECT * FROM team_project tp RIGHT JOIN project p WHERE tp_team_id = :tid');
         $statement_project -> bindValue(':tid', $User->get_teamid() );
         try {
-            $statement_project -> execute();
-            while ($row = $statement_project -> fetch(SQLITE3_ASSOC)) {
-                //Übergabe
+            $result = $statement_project -> execute();
+            while ($row = $result -> fetchArray(SQLITE3_ASSOC) != false) {
+                return $row;
             }
         }catch (PDOException $e) {
             return 'Datenbankfehler'. $e->getMessage();
@@ -200,9 +200,9 @@ class DBConn
         $statement_project = $this -> db -> prepare('SELECT * FROM team_project tp RIGHT JOIN user u WHERE tp_user_id = :uid');
         $statement_project -> bindValue(':uid', $User->get_id() );
         try {
-            $statement_project -> execute();
-            while ($row = $statement_project -> fetch(SQLITE3_ASSOC)) {
-                //Übergabe
+            $result = $statement_project -> execute();
+            while ($row = $result -> fetchArray(SQLITE3_ASSOC) != false) {
+                return $row;
             }
         }catch (PDOException $e) {
             return 'Datenbankfehler'. $e->getMessage();
@@ -214,8 +214,8 @@ class DBConn
         $statement = $this -> db -> prepare('SELECT * FROM todo WHERE project_id = :ProjectID');
         $statement ->bindValue(':ProjectID', $User->get_project() );
         try {
-        $statement -> execute();
-        while($result = $statement -> fetch(SQLITE3_ASSOC)) {
+        $result = $statement -> execute();
+        while($result -> fetchArray(SQLITE3_ASSOC)) {
             //Übergabe
         }
         }catch (PDOException $e) {
