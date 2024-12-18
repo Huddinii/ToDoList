@@ -48,9 +48,18 @@
                 <button class="headerbtn" id="About_Us" onclick="Impressum()">About us</button>
             </div> 
             <h1>To Do Liste</h1>
-            <div class="headerbuttons_right">
+            <div class="left_header_container">
+                <div class="dropdown">
+                    <button class="headerbtn" id="Team"><i class="fa fa-users" aria-hidden="true"></i><p>Teams</p></button>
+                    <div class="dropdown-content">
+                    <a href="#">Team1</a>
+                    <a href="#">Team2</a>
+                    </div>     
+                </div>
+                <div class="headerbuttons_right">
                 <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
                 <button class="headerbtn" id="log_out"><i class="fa fa-sign-out" aria-hidden="true" onclick="Logout()"></i></button>
+            </div>
             </div>
         </header>
 <!------------------------------------------------------ ContentWrapper ------------------------------------------------------>
@@ -80,10 +89,6 @@
                         <button class="NewEntry" onclick="OpenPopup('High')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                         </div>
                         <div class="PriorityArea" id="High" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <!-- <div id="item1" class="item" draggable="true" ondragstart="drag(event)"><p>test1</p><button class="EditItem"><i class="fa fa-eye" aria-hidden="true"></i></button> </div>
-                        <div id="item2" class="item" draggable="true" ondragstart="drag(event)">test 2<button class="EditItem" type="button"></button></div>
-                        <div id="item3" class="item" draggable="true" ondragstart="drag(event)">test 3</div>
-                        <div id="item4" class="item" draggable="true" ondragstart="drag(event)">test 4</div> -->
                         </div>
                     </div>
 
@@ -96,7 +101,6 @@
                     <div class="PriorityArea" id="Medium" ondrop="drop(event)" ondragover="allowDrop(event)">
 
                     </div>
-                        <!-- <button class="addElement"></button> -->
                     </div>
 
 

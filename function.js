@@ -17,8 +17,8 @@ function changeNav() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-const resizer = document.getElementById('test2');
-const sidebar = document.getElementById('test1');
+const resizer = document.querySelector('.resizer');
+const sidebar = document.querySelector('.sidebar');
 let isResizing = false;
 console.log("test");
 
@@ -27,6 +27,10 @@ resizer.addEventListener('mousedown', (e) => {
   document.body.style.cursor = 'ew-resize'; // Cursor ändern
   console.log("angeklickt");
   e.preventDefault();
+  const buttons = document.querySelectorAll(".ScreenWrapper button");
+  buttons.forEach(button => {
+    button.disabled = true; // Deaktiviert Buttons
+  }); 
 });
 
 document.addEventListener('mousemove', (e) => {
@@ -43,6 +47,10 @@ document.addEventListener('mousemove', (e) => {
 document.addEventListener('mouseup', () => {
   isResizing = false;
   document.body.style.cursor = 'default'; // Cursor zurücksetzen
+  const buttons = document.querySelectorAll(".ScreenWrapper button");
+  buttons.forEach(button => {
+    button.disabled = false; // Deaktiviert Buttons
+  }); 
 });
 });
 
