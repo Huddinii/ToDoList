@@ -65,8 +65,8 @@ class DBConn
         $statement->bindValue(':email', $email);
 
         try {
-            $user = $statement->execute();
-            $user = $statement->fetchArray(SQLITE3_ASSOC); // Benutzerdaten abrufen
+            $result = $statement->execute();
+            $user = $result->fetchArray(SQLITE3_ASSOC); // Benutzerdaten abrufen
 
             // Überprüfen, ob ein Benutzer mit dieser E-Mail existiert
             if (!$user) {
