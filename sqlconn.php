@@ -1,29 +1,30 @@
 <?php
 
-$User = new User();
-
-include("dbcreate.php");
 include("ClassUser.php");
-class DBConn
+include("dbcreate.php");
+
+
+
+class SQLConn
 {
     private $db;
+    private $host;
 
     function __construct() {
         $this -> db = new SQLite3('sqlite.db', SQLITE3_OPEN_READWRITE);
         $this -> db -> enableExceptions(true);
+        $this -> host = new User();
     }
     function __destruct() {
         $this -> db -> close();
     }
 
     function createUser($username, $mail, $password) {
-        global $User;
         // Passwort hashen
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // SQL-Statement vorbereiten
-        $statement = $this -> db->prepare('INSERT INTO user (username, mail, password)
-            VALUES (:uid, :username, :mail, :password)');
+        $statement = $this -> db->prepare('INSERT INTO user (username, mail, password) VALUES (:username, :mail, :password)');
 
         // Werte binden
         $statement->bindValue(':username', $username);
@@ -34,7 +35,12 @@ class DBConn
         // Ausführen und Fehler behandeln
         try {
             $statement->execute();
-            $User->login($this->db ->lastInsertRowID(),,);
+            $ID = $this -> db->lastInsertRowID();
+            $selectStatement= $this -> db -> prepare('SELECT * FROM user WHERE id = :ID');
+            $selectStatement->bindValue(':ID', $ID);
+            $result=$selectStatement->execute();
+            $insertedUSer = $result->fetchArray(SQLITE3_ASSOC);
+            $this->host->login($insertedUSer['id'],$insertedUSer['username'],$insertedUSer['mail']);
             return 'Benutzer erfolgreich erstellt.';
         } catch (PDOException $e) {
             if ($e->getCode() == 23000) { // Fehlercode für UNIQUE-Verletzung
@@ -44,21 +50,7 @@ class DBConn
         }
     }
 
-    // function getUser($username) {
-        
-    //     $statement = $this -> db->prepare('SELECT * FROM "user" WHERE "user_id" = ? AND "password" = ?');
-    //     $statement->bindValue(1, 'admin2');
-    //     $statement->bindValue(2, 'test321');
-    //     $result = $statement->execute();
-    //     if ($result === false) {
-    //         return false;
-    //     } else {
-    //         return $result;
-    //     }
-    // }
-
     function loginUser($logintoken, $password) {
-        global $User;
         // SQL-Statement vorbereiten, um den Benutzer anhand der E-Mail zu finden
         $statement = $this -> db->prepare('SELECT id, username, mail, password FROM user WHERE mail = :logintoken OR username = :logintoken' );
         $statement->bindValue(':logintoken', $logintoken);
@@ -76,7 +68,7 @@ class DBConn
             if (password_verify($password, $loginattempt['password'])) {
                 // Erfolg: Benutzer gefunden und Passwort korrekt
                 // Optional: Session starten oder Token generieren
-                $User->login( $loginattempt['id'],$loginattempt['username'],$loginattempt['mail'] );
+                $this -> host ->login( $loginattempt['id'],$loginattempt['username'],$loginattempt['mail'] );
 
                 return "Willkommen, " . htmlspecialchars($loginattempt['username']) . "!";
             } else {
@@ -88,8 +80,6 @@ class DBConn
             return 'Datenbankfehler: ' . $e->getMessage();
         }
     }
-
-
 
     function createProject($pname) {
         global $User;
@@ -140,6 +130,7 @@ class DBConn
             return 'Datenbankfehler: ' . $e->getMessage();
         }
     }
+
     function createTeam($name) {
         global $User;
         $statement = $this -> db -> prepare('INSERT INTO team (name)
