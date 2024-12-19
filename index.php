@@ -13,8 +13,10 @@
 <body>
     <!------------------------------------------------------ CREATETODO FORM ------------------------------------------------------>
     <?php
-        // include("sqlite.php");
-        //getUser("Test","Test2");
+        include("sqlconn.php");
+        $sqlconn = new SQLConn();
+        $sqlconn->loginUser('testuser','StrongPassword');
+        echo $_SESSION['uid'];
     ?>
     <div class="Form_Popup" id="myForm">
         <form class="Form_Container">
