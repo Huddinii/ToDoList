@@ -15,6 +15,7 @@
             <div class="div_text">
                 <p>Du hast einen Accout? klick <a href="login.php">hier</a></p>
             </div> 
+            <input type="hidden" name="method" value="register">
             <label for="username">Benutzername</label>
             <input type="text" id="username" name="username" required>
             <label for="E-Mail">E-Mail</label>
