@@ -132,6 +132,29 @@ document.addEventListener('mouseup', () => {
         closeFrom();
         }
   }
+  function open_form_sidebar()
+  {
+    var footer = document.querySelector('.footer');
+    var footer_clicked = document.querySelector('.footer_clicked');
+    footer.style.opacity = 0;
+    footer.style.display = 'none';
+    footer_clicked.style.opacity = 1;
+    footer_clicked.style.display = 'block';
+  }
+
+  function footer_close()
+  {
+    var footer = document.querySelector('.footer');
+    var footer_clicked = document.querySelector('.footer_clicked');
+    footer.style.opacity = 1;
+    footer.style.display = 'block';
+    footer_clicked.style.opacity = 0;
+    footer_clicked.style.display = 'none';
+
+    const form = document.getElementById("myForm");
+    form.reset(); // Optional: Formular zurücksetzen
+  }   
+
 
   function Logout() {
     window.location.href = "login.php"; // Relativer Pfad zur neuen Seite

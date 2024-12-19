@@ -86,6 +86,8 @@
   bottom: auto;
   left: 0;
   align-self: center;
+  opacity: 1;
+  display: block;
 }
 
 .FooterButton {
@@ -111,35 +113,41 @@
 }
 
 .footer_clicked {
-  bottom: auto;
+  bottom: 0;
   left: 0;
   align-self: center;
   width: 100%;
-  opacity: 1;
-  height: 10rem;
+  opacity: 0;
+  margin-left: 4px;
+  height: 5rem;
+  position: absolute;
+  display: none;
 }
 .footer_clicked_input {
   width: 100%;
   margin-bottom: 1vh;
   height: 2vh;
+  bottom: auto;
 }
 .footer_input {
   size: 100%;
   border-radius: 20px;
   border: solid 1px;
-
+  bottom: auto;
 }
 
 
 .footer_clicked_buttons {
   width: 100%;
   display: flex;
+  position: absolute;
+  bottom: auto;
 }
 
 .footer_clicked_button {
   width: 45%;
   margin: 0px 2px;
-  bottom: 0;
+  bottom: auto;
   font-family: Arial;
   font-weight: bold;
   color: white;
