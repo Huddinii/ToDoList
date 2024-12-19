@@ -75,6 +75,16 @@
                         <a href="Impressum.php">Impressum</a>
 
                         <div class="footer"><button class="FooterButton">Neues Projekt</button></div>
+                        <div class="footer_clicked">
+                            <div class="footer_clicked_input">
+                                <input type="text" placeholder="Neues Projekt" id="footer_input">
+                            </div>
+                            <div class="footer_clicked_buttons">
+                                <button class="footer_clicked_button" onclick="footer_close()">abbrechen</button>
+                                <button class="footer_clicked_button" onclick="add_project()">erstellen</button>
+                            </div>
+
+                        </div>
                     </div>
 
             </div>
