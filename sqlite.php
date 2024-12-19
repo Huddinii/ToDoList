@@ -34,8 +34,7 @@ class DBConn
         // Ausführen und Fehler behandeln
         try {
             $statement->execute();
-            $User->set_id($this->db ->lastInsertRowID());
-            $User->set_email($mail);
+            $User->login($this->db ->lastInsertRowID(),,);
             return 'Benutzer erfolgreich erstellt.';
         } catch (PDOException $e) {
             if ($e->getCode() == 23000) { // Fehlercode für UNIQUE-Verletzung
@@ -45,45 +44,41 @@ class DBConn
         }
     }
 
-    function getUser($username) {
+    // function getUser($username) {
         
-        $statement = $this -> db->prepare('SELECT * FROM "user" WHERE "user_id" = ? AND "password" = ?');
-        $statement->bindValue(1, 'admin2');
-        $statement->bindValue(2, 'test321');
-        $result = $statement->execute();
-        if ($result === false) {
-            return false;
-        } else {
-            return $result;
-        }
-    }
+    //     $statement = $this -> db->prepare('SELECT * FROM "user" WHERE "user_id" = ? AND "password" = ?');
+    //     $statement->bindValue(1, 'admin2');
+    //     $statement->bindValue(2, 'test321');
+    //     $result = $statement->execute();
+    //     if ($result === false) {
+    //         return false;
+    //     } else {
+    //         return $result;
+    //     }
+    // }
 
-    function loginUser($email, $password) {
+    function loginUser($logintoken, $password) {
         global $User;
         // SQL-Statement vorbereiten, um den Benutzer anhand der E-Mail zu finden
-        $statement = $this -> db->prepare('SELECT id, username, email, password FROM user WHERE mail = :email');
-        $statement->bindValue(':email', $email);
+        $statement = $this -> db->prepare('SELECT id, username, mail, password FROM user WHERE mail = :logintoken OR username = :logintoken' );
+        $statement->bindValue(':logintoken', $logintoken);
 
         try {
             $result = $statement->execute();
-            $user = $result->fetchArray(SQLITE3_ASSOC); // Benutzerdaten abrufen
+            $loginattempt = $result->fetchArray(SQLITE3_ASSOC); // Benutzerdaten abrufen
 
             // Überprüfen, ob ein Benutzer mit dieser E-Mail existiert
-            if (!$user) {
-                return 'E-Mail oder Passwort ist falsch.';
+            if (!$loginattempt) {
+                return 'E-Mail oder Username ist falsch.';
             }
 
             // Passwort überprüfen
-            if (password_verify($password, $user['password'])) {
+            if (password_verify($password, $loginattempt['password'])) {
                 // Erfolg: Benutzer gefunden und Passwort korrekt
                 // Optional: Session starten oder Token generieren
-                $User->set_id( $user['id'] );
-                $User->set_email($user['email']);
-                session_start();
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
+                $User->login( $loginattempt['id'],$loginattempt['username'],$loginattempt['mail'] );
 
-                return "Willkommen, " . htmlspecialchars($user['username']) . "!";
+                return "Willkommen, " . htmlspecialchars($loginattempt['username']) . "!";
             } else {
                 // Passwort ist falsch
                 return 'E-Mail oder Passwort ist falsch.';
@@ -96,7 +91,7 @@ class DBConn
 
 
 
-    function createProject($pname,) {
+    function createProject($pname) {
         global $User;
         $statement_project = $this -> db->prepare('INSERT INTO project ( name )
             VALUES (:pid, :name)');
@@ -104,7 +99,7 @@ class DBConn
         try {
             $statement_project->execute();
             $ProjectID = $this-> db -> lastInsertRowID();
-            if (!$ProjectID) { 
+            if (!$ProjectID) {
                 return 'Anlegen Fehlgeschlagen';
             }
             //USER_PROJECT TABELLEN INSERT
@@ -129,7 +124,7 @@ class DBConn
         }
     }
 
-    function createTodo($priority, $name, $description, $enddate, $position,) {
+    function createTodo($priority, $name, $description, $position, $enddate = null) {
         global $User;
         $statement = $this -> db -> prepare('INSERT INTO todo (priority, name, description, enddate, position, project_id)
         VALUE ( :priority, :name, :description, :enddate, :position :project_id)');
@@ -140,7 +135,7 @@ class DBConn
         $statement ->bindValue(':position', $position);
         $statement ->bindValue(':project_id', $User->get_project() );
         try {
-        $statement -> execute();
+            $statement -> execute();
         } catch (PDOException $e) {
             return 'Datenbankfehler: ' . $e->getMessage();
         }
@@ -173,15 +168,13 @@ class DBConn
         $statement_user_team ->bindValue(':uid', $User->get_id() );
         try {
             $result = $statement_user_team -> execute();
-            while ($row = $result -> fetchArray(SQLITE3_ASSOC) != false) {
-                return $row;
-            }
+            return $result;
         }catch (PDOException $e) {
             return 'Datenbankfehler'. $e->getMessage();
         }
     }
 
-    function getProjects_Team() {
+    function getProjectsTeam() {
         global $User;
         $statement_project = $this -> db -> prepare('SELECT * FROM team_project tp RIGHT JOIN project p WHERE tp_team_id = :tid');
         $statement_project -> bindValue(':tid', $User->get_teamid() );
@@ -195,29 +188,25 @@ class DBConn
         }
     }
 
-    function getProjects_User() {
+    function getProjectsUser() {
         global $User;
         $statement_project = $this -> db -> prepare('SELECT * FROM team_project tp RIGHT JOIN user u WHERE tp_user_id = :uid');
         $statement_project -> bindValue(':uid', $User->get_id() );
         try {
             $result = $statement_project -> execute();
-            while ($row = $result -> fetchArray(SQLITE3_ASSOC) != false) {
-                return $row;
-            }
+            return $result;
         }catch (PDOException $e) {
             return 'Datenbankfehler'. $e->getMessage();
         }
     }
-    
-    function get_to_dos() {
+
+    function getTodos() {
         global $User;
         $statement = $this -> db -> prepare('SELECT * FROM todo WHERE project_id = :ProjectID');
         $statement ->bindValue(':ProjectID', $User->get_project() );
         try {
         $result = $statement -> execute();
-        while($result -> fetchArray(SQLITE3_ASSOC)) {
-            //Übergabe
-        }
+            return $result;
         }catch (PDOException $e) {
             return 'Datenbankfehler'. $e->getMessage();
         }

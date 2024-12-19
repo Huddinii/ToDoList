@@ -3,7 +3,7 @@
 if (!file_exists('sqlite.db')) {
     $db = new SQLite3('sqlite.db', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
     $db -> enableExceptions(true);
-    $db -> query('CREATE TABLE IF NOT EXISTS "user" (
+    $db -> query('CREATE TABLE IF NOT EXISTS user (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     username VARCHAR NOT NULL UNIQUE,
     mail VARCHAR NOT NULL UNIQUE,

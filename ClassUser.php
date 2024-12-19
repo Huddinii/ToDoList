@@ -1,37 +1,56 @@
 <?php 
 class User {
     private $id;
+    private $username;
     private $email;
     private $projectid;
     private $teamid;
 
     function __construct() {
-    }   
+        if(session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
 
-    function set_id($id) {
+    function login ($id, $username, $email) {
+        $_SESSION['uid'] = $id;
+        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $email;
         $this->id = $id;
-    }
-    function get_id() {
-        return $this->id;
-    }
-    function set_email($email) {
+        $this->username = $username;
         $this->email = $email;
     }
 
-    function get_email() {
-        return $this->email;
-
+    function logout(){
+        session_destroy();
+        $_SESSION=[];
     }
-    function set_project($project) {
+
+    function getId() {
+        return $this->id;
+    }
+
+    function getUsername() {
+        return $this -> username;
+    }
+
+    function getEmail() {
+        return $this->email;
+    }
+
+    function setProject($project) {
         $this->projectid = $project;
     }
-    function get_project() {
+
+    function getProject() {
         return $this->projectid;
     }
-    function set_teamid($teamid) {
+
+    function setTeamid($teamid) {
         $this->teamid = $teamid;
-    }   
-    function get_teamid() {
+    }
+
+    function getTeamid() {
         return $this->teamid;
     }
 
