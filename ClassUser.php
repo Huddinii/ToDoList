@@ -24,6 +24,11 @@ class User {
     function logout(){
         session_destroy();
         $_SESSION=[];
+        $this -> id = null;
+        $this -> username = null;
+        $this -> email = null;
+        $this -> projectidid = null;
+        $this -> teamid = null;
     }
 
     function getId() {

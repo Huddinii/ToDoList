@@ -8,15 +8,24 @@ class RequestHandler {
         $this->Connection = New SQLConn();
         switch ($action) {
             case 'login':
-                $this ->Connection->loginUser($params['username'], $params['password'] );
+                $this ->Connection->login($params['username'], $params['password'] );
                 break;
-            case 'logout':
+            case 'logout': 
+                header('location: index.php');
+                $this -> Connection -> logout();
                 break;
             case 'register':
                 $this ->Connection->register($params['username'], $params['mail'] ,$params['password']);
                     break;
             case 'newProject':
                 $this ->Connection->createProject($params['projectname']);
+                break;
+            case 'deleteTodo':
+                break;
+            case 'deleteProject':
+                break;    
+            case 'gotologin': 
+                header('location: login.php');
                 break;
             default:
                 echo "Unbekannte Aktion: $action";

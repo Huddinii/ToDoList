@@ -23,6 +23,11 @@ class SQLConn
         // Passwort hashen
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+        $selectStatement= $this -> db -> prepare('SELECT * FROM user WHERE username = :username or mail = :mail');
+        $selectStatement->bindValue(':username', $username);
+        $selectStatement->bindValue(':mail', $mail);
+        $result=$selectStatement->execute();
+
         // SQL-Statement vorbereiten
         $statement = $this -> db->prepare('INSERT INTO user (username, mail, password) VALUES (:username, :mail, :password)');
 
@@ -36,11 +41,7 @@ class SQLConn
         try {
             $statement->execute();
             $ID = $this -> db->lastInsertRowID();
-            $selectStatement= $this -> db -> prepare('SELECT * FROM user WHERE id = :ID');
-            $selectStatement->bindValue(':ID', $ID);
-            $result=$selectStatement->execute();
-            $insertedUSer = $result->fetchArray(SQLITE3_ASSOC);
-            $this->host->login($insertedUSer['id'],$insertedUSer['username'],$insertedUSer['mail']);
+            $this->host->login($ID,$username,$mail);
             header("Location: index.php");
             return 'Benutzer erfolgreich erstellt.';
         } catch (PDOException $e) {
@@ -53,7 +54,7 @@ class SQLConn
         }
     }
 
-    function loginUser($logintoken, $password) {
+    function login($logintoken, $password) {
         // SQL-Statement vorbereiten, um den Benutzer anhand der E-Mail zu finden
         $statement = $this -> db->prepare('SELECT id, username, mail, password FROM user WHERE mail = :logintoken OR username = :logintoken' );
         $statement->bindValue(':logintoken', $logintoken);
@@ -86,7 +87,6 @@ class SQLConn
     }
 
     function createProject($pname) {
-        global $User;
         $statement_project = $this -> db->prepare('INSERT INTO project ( name )
             VALUES (:pid, :name)');
         $statement_project->bindValue(':name', $pname);
@@ -97,17 +97,17 @@ class SQLConn
                 return 'Anlegen Fehlgeschlagen';
             }
             //USER_PROJECT TABELLEN INSERT
-            $User->set_project($pid = $ProjectID);
+            $this -> host -> setProject($pid = $ProjectID);
             $statement_user_project = $this -> db->prepare('INSERT INTO user_project ( user_id, project_id ) 
             VALUES (:uid, :pid)');
-            $statement_user_project->bindValue( ':uid', $User->get_id() );
+            $statement_user_project->bindValue( ':uid', $this -> host -> getId() );
             $statement_user_project->bindValue( ':pid', $ProjectID );
             $statement_user_project->execute();
             //TEAM_USER TABELLEN INSERT
-            if ($User->get_teamid() !== false) {
+            if ($this-> host -> getTeamid() !== false) {
             $statement_team_project = $this -> db->prepare('INSERT INTO team_project ( team_id, project_id ) 
             VALUES (:tid, :pid)');
-            $statement_team_project->bindValue( ':tid', $User->get_teamid());
+            $statement_team_project->bindValue( ':tid', $this-> host ->getTeamid());
             $statement_team_project->bindValue( ':pid', $ProjectID );
             $statement_team_project->execute();
             header("location: index.php");
@@ -120,7 +120,6 @@ class SQLConn
     }
 
     function createTodo($priority, $name, $description, $position, $enddate = null) {
-        global $User;
         $statement = $this -> db -> prepare('INSERT INTO todo (priority, name, description, enddate, position, project_id)
         VALUE ( :priority, :name, :description, :enddate, :position :project_id)');
         $statement ->bindValue(':priority', $priority);
@@ -128,7 +127,7 @@ class SQLConn
         $statement ->bindValue(':description', $description);
         $statement ->bindValue(':enddate', $enddate);
         $statement ->bindValue(':position', $position);
-        $statement ->bindValue(':project_id', $User->get_project() );
+        $statement ->bindValue(':project_id', $this-> host ->getProject() );
         try {
             $statement -> execute();
         } catch (PDOException $e) {
@@ -137,7 +136,6 @@ class SQLConn
     }
 
     function createTeam($name) {
-        global $User;
         $statement = $this -> db -> prepare('INSERT INTO team (name)
         VALUE( :name )');
         $statement ->bindValue(':name', $name);
@@ -147,11 +145,11 @@ class SQLConn
             return ''. $e->getMessage();
         }
         $TeamID = $this -> db -> lastInsertRowID();
-        $User->set_teamid($TeamID);
+        $this-> host ->setTeamid($TeamID);
         $role = 'Creator';
         $statment_user_team = $this -> db -> prepare('INSERT INTO user_team (user_id, team_id, role)
         VALUE ( :user_id, :team_id, :role )');
-        $statment_user_team -> bindValue(':user_id', $User->get_id() );
+        $statment_user_team -> bindValue(':user_id', $this -> host ->getId() );
         $statment_user_team -> bindValue(':team_id', $TeamID);
         $statment_user_team -> bindValue(':role' ,$role);
 
@@ -159,9 +157,8 @@ class SQLConn
     }
 
     function getTeams() {
-        global $User;
         $statement_user_team = $this -> db -> prepare('SELECT * FROM user_team ut  RIGHT JOIN team t WHERE ut.user_id = :uid');
-        $statement_user_team ->bindValue(':uid', $User->get_id() );
+        $statement_user_team ->bindValue(':uid', $this -> host -> getId() );
         try {
             $result = $statement_user_team -> execute();
             return $result;
@@ -171,9 +168,8 @@ class SQLConn
     }
 
     function getProjectsTeam() {
-        global $User;
         $statement_project = $this -> db -> prepare('SELECT * FROM team_project tp RIGHT JOIN project p WHERE tp_team_id = :tid');
-        $statement_project -> bindValue(':tid', $User->get_teamid() );
+        $statement_project -> bindValue(':tid', $this -> host ->getTeamid() );
         try {
             $result = $statement_project -> execute();
             while ($row = $result -> fetchArray(SQLITE3_ASSOC) != false) {
@@ -185,9 +181,8 @@ class SQLConn
     }
 
     function getProjectsUser() {
-        global $User;
         $statement_project = $this -> db -> prepare('SELECT * FROM team_project tp RIGHT JOIN user u WHERE tp_user_id = :uid');
-        $statement_project -> bindValue(':uid', $User->get_id() );
+        $statement_project -> bindValue(':uid', $this -> host ->getId() );
         try {
             $result = $statement_project -> execute();
             return $result;
@@ -197,9 +192,8 @@ class SQLConn
     }
 
     function getTodos() {
-        global $User;
         $statement = $this -> db -> prepare('SELECT * FROM todo WHERE project_id = :ProjectID');
-        $statement ->bindValue(':ProjectID', $User->get_project() );
+        $statement ->bindValue(':ProjectID', $this -> host ->getProject() );
         try {
         $result = $statement -> execute();
             return $result;
@@ -208,17 +202,7 @@ class SQLConn
         }
     }
 
-
-
+    function logout() {
+        $this -> host -> logout();
+    }
 }
-// echo("Get the 1st row as an associative array:\n");
-// print_r($result->fetchArray(SQLITE3_ASSOC));
-// echo("\n");
-
-// echo("Get the next row as a numeric array:\n");
-// print_r($result->fetchArray(SQLITE3_NUM));
-// echo("\n");
-
-// $result->finalize();
-
-// $db->close();

@@ -15,7 +15,7 @@
     <?php
         include("sqlconn.php");
         $sqlconn = new SQLConn();
-        $sqlconn->loginUser('testuser','StrongPassword');
+        //$sqlconn->login('testuser','StrongPassword');
         // echo $_SESSION['uid'];
     ?>
     <div class="Form_Popup" id="myForm">
@@ -59,9 +59,22 @@
                     </div>     
                 </div>
                 <div class="headerbuttons_right">
-                <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
-                <button class="headerbtn" id="log_out"><i class="fa fa-sign-out" aria-hidden="true" onclick="Logout()"></i></button>
-            </div>
+                    <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
+                    <form action="handler.php" method="POST">
+                        <?php 
+                            if(isset($_SESSION['uid']) && $_SESSION != false) {
+                                $action = 'logout';
+                                $classname = 'fa-sign-out';
+                            } else {
+                                $action = 'gotologin';
+                                $classname = 'fa-sign-in';
+                            }
+                        
+                        ?>    
+                        <input type="hidden" name="method" value="<?php echo $action; ?>">
+                        <button type="submit" class="headerbtn"><i class="fa <?php echo $classname ?>" aria-hidden="true"></i></button>
+                    </form>
+                </div>
             </div>
         </header>
 <!------------------------------------------------------ ContentWrapper ------------------------------------------------------>
@@ -71,11 +84,6 @@
                 <div class="resizer" id=test2></div>
                     <button class="openbtn" onclick="changeNav()">&#9776;</button>
                     <div id="sidebarelements">
-                        <a href="#">About</a>
-                    <!-- <a href="sortable.html">Sortable</a> -->
-                        <a href="#">Test</a>
-                        <a href="Impressum.php">Impressum</a>
-
                         <div class="footer"><button class="FooterButton"onclick="open_form_sidebar()">Neues Projekt</button></div>
                         <form id="footer_form" action="handler.php" method="POST">
                         <div class="footer_clicked">
@@ -97,32 +105,30 @@
             <div class="main">
                 <h2>ProjectName</h2>
                 <div class="PriorityCategories">
-
                     <div class="PriorityElement">
                         <div class="PriorityHeader"id="HeaderHigh">
-                        <h3>High</h3>
-                        <button class="NewEntry" onclick="OpenPopup('High')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
+                            <h3>High</h3>
+                            <button class="NewEntry" onclick="OpenPopup('High')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                         </div>
                         <div class="PriorityArea" id="High" ondrop="drop(event)" ondragover="allowDrop(event)">
                         </div>
                     </div>
 
+                    <div class="PriorityElement">
+                        <div class="PriorityHeader"id="HeaderMedium">
+                            <h3>Medium</h3>
+                            <button class="NewEntry" onclick="OpenPopup('Medium')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
+                        </div>
+                        <div class="PriorityArea" id="Medium" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                        </div>
+                    </div>
+
 
                     <div class="PriorityElement">
-                    <div class="PriorityHeader"id="HeaderMedium">
-                        <h3>Medium</h3>
-                        <button class="NewEntry" onclick="OpenPopup('Medium')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
-                    </div>
-                    <div class="PriorityArea" id="Medium" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-                    </div>
-                    </div>
-
-
-                    <div class="PriorityElement">
-                    <div class="PriorityHeader"id="HeaderLow">
-                        <h3>Low</h3>
-                        <button class="NewEntry" onclick="OpenPopup('Low')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
+                        <div class="PriorityHeader"id="HeaderLow">
+                            <h3>Low</h3>
+                            <button class="NewEntry" onclick="OpenPopup('Low')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                         </div>
                         <div class="PriorityArea"  id="Low" ondrop="drop(event)" ondragover="allowDrop(event)">
 
