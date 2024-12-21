@@ -60,7 +60,7 @@
                 </div>
                 <div class="headerbuttons_right">
                     <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
-                    <form action="handler.php" method="POST">
+                    <form action="handler.php" method="POST" class="headerform">
                         <?php 
                             if(isset($_SESSION['uid']) && $_SESSION != false) {
                                 $action = 'logout';
