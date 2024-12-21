@@ -41,11 +41,14 @@ class SQLConn
             $result=$selectStatement->execute();
             $insertedUSer = $result->fetchArray(SQLITE3_ASSOC);
             $this->host->login($insertedUSer['id'],$insertedUSer['username'],$insertedUSer['mail']);
+            header("Location: index.php");
             return 'Benutzer erfolgreich erstellt.';
         } catch (PDOException $e) {
             if ($e->getCode() == 23000) { // Fehlercode für UNIQUE-Verletzung
+                echo('Fehlschlag');
                 return 'E-Mail oder Benutzername existiert bereits.';
             }
+            echo('Fehlschlag 2');
             return 'Datenbankfehler: ' . $e->getMessage();
         }
     }
@@ -69,10 +72,11 @@ class SQLConn
                 // Erfolg: Benutzer gefunden und Passwort korrekt
                 // Optional: Session starten oder Token generieren
                 $this -> host ->login( $loginattempt['id'],$loginattempt['username'],$loginattempt['mail'] );
-
+                header("Location: index.php");
                 return "Willkommen, " . htmlspecialchars($loginattempt['username']) . "!";
             } else {
                 // Passwort ist falsch
+                header("location: login.php");
                 return 'E-Mail oder Passwort ist falsch.';
             }
         } catch (PDOException $e) {
@@ -106,6 +110,7 @@ class SQLConn
             $statement_team_project->bindValue( ':tid', $User->get_teamid());
             $statement_team_project->bindValue( ':pid', $ProjectID );
             $statement_team_project->execute();
+            header("location: index.php");
             }
 
         } catch (PDOException $e) {

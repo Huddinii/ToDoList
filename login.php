@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="loginstyles.css"/>
     <script src="loginfunctions.js"></script>
     <?php
-    include("sqlite.php");
+    include("sqlconn.php");
     ?>
 
 </head>
@@ -12,7 +12,7 @@
 
     <div class="login-container">
         <h2>Login</h2>
-        <form action="login.php" method="POST">
+        <form action="handler.php" method="POST">
             <div class="div_text">
                 <p>Noch keinen Accout klick <a href="register.php">hier</a></p>
             </div> 
