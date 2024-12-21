@@ -27,6 +27,9 @@ class RequestHandler {
             case 'gotologin': 
                 header('location: login.php');
                 break;
+            case'ChangeProject':
+                header('Location: index.php');
+                break;
             default:
                 echo "Unbekannte Aktion: $action";
         }

@@ -80,6 +80,43 @@
     box-shadow: 3px 3px 1px 1px #635ba7;
   }
 
+#SidebarForm {
+  height: 100%;
+  max-width: 100%;
+
+}
+.SidebarElements{
+  width: 98%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+}
+.sidebarbutton {
+  padding: 4px 4px 4px 4px;
+  text-decoration: none;
+  font-family:  Arial;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  background-color: transparent;
+  display: block;
+  transition: all 0.05s ease-in;
+  max-width: 100%;
+  border: none;
+}
+.SidebarElements:hover{
+  background-color: #c7c1ff; 
+  background-image: linear-gradient(to right,#d9d5ff,#978cff );
+  color: #f1f1f1;
+  border-radius: 10px;
+
+}
+.SidebarElements:hover .sidebarbutton:hover{
+  color: #f1f1f1;
+
+}
+
+
 
 
 .footer {

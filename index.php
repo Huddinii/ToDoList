@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="Formstyles.css" />
     <link rel="stylesheet" href="sidbarstyles.css" />
+    <link rel="stylesheet" href="sidebarform.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="function.js"></script>
     <script src="drag and drop.js"></script>
@@ -42,6 +43,23 @@
             </div>
         </form>
     </div>
+
+<!------------------------------------------------------ CREATE DELETEFORM ------------------------------------------------------>
+<div id="DeleteForm"class="SidebarForm_Container">
+    <form id="SFORM" class="SidebarForm" action="handler.php" method="POST">
+    <input type="hidden" name="method"value="DeleteProject">
+    <div class="SF_Text">
+        <p>Möchten sie das Projekt wirklich löschen</p>
+    </div>
+    <div class="SF_buttons">
+        <button type="button" class="SF_button" onclick="closeSidebarForm()">abbrechen</button>
+        <button type="submit"class="SF_button">löschen</button>
+    </div>
+    </form>
+
+
+</div>
+
  <!------------------------------------------------------ ScreenWrapper ------------------------------------------------------>
     <div class="ScreenWrapper" id="ScreenWrapperID">
 <!------------------------------------------------------ Header ------------------------------------------------------>
@@ -83,8 +101,20 @@
             <div class="sidebar" id="test1">
                 <div class="resizer" id=test2></div>
                     <button class="openbtn" onclick="changeNav()">&#9776;</button>
-                    <div id="sidebarelements">
-                        <div class="footer"><button class="FooterButton"onclick="open_form_sidebar()">Neues Projekt</button></div>
+                    <!-- <div id="sidebarelements"> -->
+
+                    <Form id="SidebarForm"action="handler.php" method="POST">
+                        <input type="hidden" name="method" value="ChangeProject">
+                        <div class="SidebarElements">
+                            <input type="hidden" value="">
+                            <button class="sidebarbutton"type="submit"><p>Projekt 1</p></button>
+                            <button class="sidebarbutton" id="OpenSidebarForm" onclick="OpenForm()" type="button"><i class="fa fa-close"aria-hidden="true" ></i></button>
+                        </div>
+
+                    </Form>
+                        <div class="footer">
+                            <button class="FooterButton"onclick="open_form_sidebar()">Neues Projekt</button>
+                        </div>
                         <form id="footer_form" action="handler.php" method="POST">
                         <div class="footer_clicked">
                             <div class="footer_clicked_input">
@@ -98,7 +128,7 @@
 
                         </div>
                         </form>
-                    </div>
+                    <!-- </div> -->
 
             </div>
 <!------------------------------------------------------ Main ------------------------------------------------------>

@@ -151,15 +151,42 @@ document.addEventListener('mouseup', () => {
     footer_clicked.style.opacity = 0;
     footer_clicked.style.display = 'none';
 
-    const form = document.getElementById("myForm");
+    const form = document.getElementById("footer_form");
     form.reset(); // Optional: Formular zurücksetzen
   }   
 
+ function OpenForm()
+ {
+  document.getElementById("DeleteForm").style.display = "block";
+  // document.getElementById("ScreenWrapperID").style.pointerEvents = "none";
+  const ScreenWrapper = document.getElementsByClassName("ScreenWrapper")[0]
+  ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
+  ScreenWrapper.style.pointerEvents = "none";
+  const buttons = document.querySelectorAll(".ScreenWrapper button");
+  buttons.forEach(button => {
+    button.disabled = true; // Deaktiviert Buttons
+  }); 
+  const form = document.getElementById("SFORM");
+  form.reset();
+ }
+ function closeSidebarForm() {
+  document.getElementById("DeleteForm").style.display = "none";
+  // document.getElementById("ScreenWrapperID").style.pointerEvents = "none";
+  const ScreenWrapper = document.getElementsByClassName("ScreenWrapper")[0]
+  ScreenWrapper.style.pointerEvents = "";
+  ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0)";
+  const buttons = document.querySelectorAll(".ScreenWrapper button");
+  buttons.forEach(button => {
+    button.disabled = false; // Deaktiviert Buttons
+  }); 
+  const form = document.getElementById("SFORM");
+  form.reset();
+ }
 
-  function Logout() {
-    window.location.href = "login.php"; // Relativer Pfad zur neuen Seite
-}
 
 function Impressum() {
   window.location.href = "Impressum.php"; // Relativer Pfad zur neuen Seite
+}
+function Index() {
+  window.location.href = "index.php"; // Relativer Pfad zur neuen Seite
 }
