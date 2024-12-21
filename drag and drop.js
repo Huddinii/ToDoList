@@ -40,11 +40,26 @@ function allowDrop(ev) {
       target.appendChild(draggedElement);
     }
 
+    updatePositions();
     // Entferne alle temporären "Platzhalter"-Styles, wenn der Drop abgeschlossen ist
-    Array.from(target.children).forEach(child => {
-      child.style.transition = "none"; // Stelle sicher, dass keine Animationen nach dem Drop stattfinden
-    });
+    // Array.from(target.children).forEach(child => {
+    //   child.style.transition = "none"; // Stelle sicher, dass keine Animationen nach dem Drop stattfinden
+    // });
   }
+
+  function updatePositions() {
+    const allItems = document.querySelectorAll('.PriorityArea .item');
+    allItems.forEach((item, index) => {
+        const positionInput = item.querySelector(`input[name="position[${item.dataset.id}]"]`);
+        if (positionInput) {
+            positionInput.value = index + 1; // Set position based on index (1-based)
+        }
+    });
+
+    // Trigger the HTMX 'end' event to submit the form
+    const form = document.querySelector('.sortable');
+    form.dispatchEvent(new Event('end')); // Trigger 'end' to submit form with HTMX
+}
 
   // Funktion für das "Hover"-Verhalten: verschiebe die anderen Elemente, wenn das Element darüber gezogen wird
   function onDragOver(ev) {
@@ -67,10 +82,10 @@ function allowDrop(ev) {
       }
     }
   }
-  const closestChild = Array.from(target.children).find(child => {
-    const rect = child.getBoundingClientRect();
-    return ev.clientY < rect.top + rect.height / 2;
-  });
+  // const closestChild = Array.from(target.children).find(child => {
+  //   const rect = child.getBoundingClientRect();
+  //   return ev.clientY < rect.top + rect.height / 2;
+  // });
 
 
 

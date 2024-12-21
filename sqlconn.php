@@ -27,30 +27,26 @@ class SQLConn
         $selectStatement->bindValue(':username', $username);
         $selectStatement->bindValue(':mail', $mail);
         $result=$selectStatement->execute();
+        if ($result===false) {
 
-        // SQL-Statement vorbereiten
-        $statement = $this -> db->prepare('INSERT INTO user (username, mail, password) VALUES (:username, :mail, :password)');
+            // SQL-Statement vorbereiten
+            $statement = $this -> db->prepare('INSERT INTO user (username, mail, password) VALUES (:username, :mail, :password)');
 
-        // Werte binden
-        $statement->bindValue(':username', $username);
-        $statement->bindValue(':mail', $mail);
-        $statement->bindValue(':password', $hashedPassword);
+            // Werte binden
+            $statement->bindValue(':username', $username);
+            $statement->bindValue(':mail', $mail);
+            $statement->bindValue(':password', $hashedPassword);
 
-
-        // Ausführen und Fehler behandeln
-        try {
+            // Ausführen und Fehler behandeln
             $statement->execute();
             $ID = $this -> db->lastInsertRowID();
             $this->host->login($ID,$username,$mail);
+            $this -> createProject('Mein Projekt');
             header("Location: index.php");
             return 'Benutzer erfolgreich erstellt.';
-        } catch (PDOException $e) {
-            if ($e->getCode() == 23000) { // Fehlercode für UNIQUE-Verletzung
-                echo('Fehlschlag');
-                return 'E-Mail oder Benutzername existiert bereits.';
-            }
-            echo('Fehlschlag 2');
-            return 'Datenbankfehler: ' . $e->getMessage();
+
+        } else {
+            return 'E-Mail oder Benutzername existiert bereits.';
         }
     }
 
@@ -105,12 +101,12 @@ class SQLConn
             $statement_user_project->execute();
             //TEAM_USER TABELLEN INSERT
             if ($this-> host -> getTeamid() !== false) {
-            $statement_team_project = $this -> db->prepare('INSERT INTO team_project ( team_id, project_id ) 
-            VALUES (:tid, :pid)');
-            $statement_team_project->bindValue( ':tid', $this-> host ->getTeamid());
-            $statement_team_project->bindValue( ':pid', $ProjectID );
-            $statement_team_project->execute();
-            header("location: index.php");
+                $statement_team_project = $this -> db->prepare('INSERT INTO team_project ( team_id, project_id ) 
+                VALUES (:tid, :pid)');
+                $statement_team_project->bindValue( ':tid', $this-> host ->getTeamid());
+                $statement_team_project->bindValue( ':pid', $ProjectID );
+                $statement_team_project->execute();
+                header("location: index.php");
             }
 
         } catch (PDOException $e) {

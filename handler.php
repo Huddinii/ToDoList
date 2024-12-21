@@ -9,16 +9,19 @@ class RequestHandler {
         switch ($action) {
             case 'login':
                 $this ->Connection->login($params['username'], $params['password'] );
+                header('location: index.php');
                 break;
             case 'logout': 
-                header('location: index.php');
                 $this -> Connection -> logout();
+                header('location: index.php');
                 break;
             case 'register':
                 $this ->Connection->register($params['username'], $params['mail'] ,$params['password']);
-                    break;
+                header('location: index.php');
+                break;
             case 'newProject':
                 $this ->Connection->createProject($params['projectname']);
+                header('location: index.php');
                 break;
             case 'deleteTodo':
                 break;
@@ -26,6 +29,10 @@ class RequestHandler {
                 break;    
             case 'gotologin': 
                 header('location: login.php');
+                break;
+            case 'createTodo':
+                $this ->Connection->createTodo( $params['prio'], $params['name'], $params['desctiption'],$params['position'],$params['enddate'] );
+                header('location: index.php');
                 break;
             default:
                 echo "Unbekannte Aktion: $action";
