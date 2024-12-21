@@ -13,7 +13,7 @@ class RequestHandler {
             case 'logout':
                 break;
             case 'register':
-                $this ->Connection->CreateUser($params['username'], $params['mail'] ,$params['password']);
+                $this ->Connection->register($params['username'], $params['mail'] ,$params['password']);
                     break;
             case 'newProject':
                 $this ->Connection->createProject($params['projectname']);
