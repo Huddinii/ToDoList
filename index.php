@@ -47,14 +47,14 @@
 <!------------------------------------------------------ CREATE DELETEFORM ------------------------------------------------------>
 <div id="DeleteForm"class="SidebarForm_Container">
     <form id="SFORM" class="SidebarForm" action="handler.php" method="POST">
-    <input type="hidden" name="method"value="DeleteProject">
-    <div class="SF_Text">
-        <p>Möchten sie das Projekt wirklich löschen</p>
-    </div>
-    <div class="SF_buttons">
-        <button type="button" class="SF_button" onclick="closeSidebarForm()">abbrechen</button>
-        <button type="submit"class="SF_button">löschen</button>
-    </div>
+        <input type="hidden" name="method"value="DeleteProject">
+        <div class="SF_Text">
+            <p>Möchten sie das Projekt wirklich löschen</p>
+        </div>
+        <div class="SF_buttons">
+            <button type="button" class="SF_button" onclick="closeSidebarForm()">abbrechen</button>
+            <button type="submit"class="SF_button">löschen</button>
+        </div>
     </form>
 
 
