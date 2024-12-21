@@ -1,0 +1,37 @@
+
+.SidebarForm_Container {
+    display: none;
+    position: fixed;
+    /* bottom: 0; */
+    /* right: 15px; */
+    border: 3px solid black;
+    z-index: 9;
+    top:50%;
+    left:50%;
+    max-height: 55%;
+    transform: translate(-50%,-50%);
+    transition: opacity 0.2s ease;
+    /* box-shadow: 4px 4px 4px 4px #888; */
+}
+.SidebarForm {
+    padding: 10px;
+    max-width: 400px;
+    background-color: white;
+}
+.SF_Text {
+font-family: sans-serif;
+padding: 0px 10px;
+}
+
+.SF_buttons {
+color: black;
+display: flex;
+width: 90%;
+justify-content: space-between;
+padding:  0px 10px;
+}
+
+.SF_button {
+    color: black;
+
+}

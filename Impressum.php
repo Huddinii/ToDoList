@@ -11,7 +11,7 @@
 <div class="ScreenWrapper">
 <header>
             <div class="headerbutton_left">
-                <button class="headerbtn" id="About_Us" onclick="Impressum()">About us</button>
+                <button class="headerbtn" id="About_Us" onclick="Index()">Projekt</button>
             </div> 
             <h1>To Do Liste</h1>
             <div class="headerbuttons_right">
@@ -24,10 +24,6 @@
             <button class="openbtn" onclick="changeNav()">&#9776;</button>
             <div id="sidebarelements">
                 <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
-                <a href="index.php">About</a>
-                <a href="#">Services</a>
-                <a href="#">Clients</a>
-                <a href="#">Impressum</a>
             </div>
         </div>
         <div class="main">

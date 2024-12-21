@@ -30,6 +30,9 @@ class RequestHandler {
             case 'gotologin': 
                 header('location: login.php');
                 break;
+            case'ChangeProject':
+                header('Location: index.php');
+                break;
             case 'createTodo':
                 $this ->Connection->createTodo( $params['prio'], $params['name'], $params['desctiption'],$params['position'],$params['enddate'] );
                 header('location: index.php');

@@ -19,6 +19,12 @@ header{
   align-items: center;
   height: 100%;
 }
+.headerbuttons_right .headerform{
+  height: 100%;
+  width: 100%;
+  align-content: center;
+}
+
 .headerbuttons_right .headerbtn {
   font-size: 2rem;
   padding: 0px 1rem;
