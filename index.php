@@ -77,11 +77,11 @@
                         <a href="Impressum.php">Impressum</a>
 
                         <div class="footer"><button class="FooterButton"onclick="open_form_sidebar()">Neues Projekt</button></div>
-                        <form id="footer_form" action="sqlite.php" method="POST">
+                        <form id="footer_form" action="handler.php" method="POST">
                         <div class="footer_clicked">
                             <div class="footer_clicked_input">
                             <input type="hidden" name="method" value="newProject">
-                                <input type="text" placeholder="Neues Projekt" id="footer_input">
+                                <input type="text" placeholder="Neues Projekt" id="footer_input"name="projectname">
                             </div>
                             <div class="footer_clicked_buttons">
                                 <button type="button"class="footer_clicked_button" onclick="footer_close()">abbrechen</button>
