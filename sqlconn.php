@@ -19,7 +19,7 @@ class SQLConn
         $this -> db -> close();
     }
 
-    function createUser($username, $mail, $password) {
+    function register($username, $mail, $password) {
         // Passwort hashen
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
