@@ -3,7 +3,6 @@ class User {
     private $id;
     private $username;
     private $email;
-    private $projectid;
     private $teamid;
 
     function __construct() {
@@ -27,12 +26,11 @@ class User {
         $this -> id = null;
         $this -> username = null;
         $this -> email = null;
-        $this -> projectidid = null;
         $this -> teamid = null;
     }
 
     function getId() {
-        return $this->id;
+        return $_SESSION['uid'];
     }
 
     function getUsername() {
@@ -44,11 +42,11 @@ class User {
     }
 
     function setProject($project) {
-        $this->projectid = $project;
+        $_SESSION['projectid'] = $project;
     }
 
     function getProject() {
-        return $this->projectid;
+        return $_SESSION['projectid'];
     }
 
     function setTeamid($teamid) {

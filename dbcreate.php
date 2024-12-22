@@ -22,12 +22,12 @@ if (!file_exists('sqlite.db')) {
 
     $db -> query('CREATE TABLE IF NOT EXISTS todo (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    priority INTEGER NOT NULL,
+    priority TEXT NOT NULL,
     name TEXT NOT NULL,
     description TEXT,
     enddate DATE,
     position INTEGER,
-    project_id INTEGER UNIQUE,
+    project_id INTEGER,
     FOREIGN KEY (project_id) REFERENCES project(id)
     )');
 

@@ -15,19 +15,21 @@
     <!------------------------------------------------------ CREATETODO FORM ------------------------------------------------------>
     <?php
         include("sqlconn.php");
-        $sqlconn = new SQLConn();
+        $sqlconn = SQLConn::getInstance();
         //$sqlconn->login('testuser','StrongPassword');
         // echo $_SESSION['uid'];
     ?>
     <div class="Form_Popup" id="myForm">
-        <form class="Form_Container">
+        <form class="Form_Container" action="handler.php" method="POST">
+            <input type="hidden" name="method"value="CreateTodo">
+            <input type="hidden" name="priority" id="priority" value="">
             <div class="Form_Header">
                 <h1>Neuer To Do</h1>
                 <button type="button"class="CloseForm" onclick="closeFrom()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
             </div>
             <div class="div_text_date">
-                <input type="text" placeholder="Neuer Eintrag" required id="text_input">
-                <input type="date" id="date_input">
+                <input type="text" name="name" placeholder="Neuer Eintrag" required id="text_input">
+                <input type="date" name="enddate" id="date_input">
             </div>
             <!-- <div class="div_time">
                 <p>Von</p>
@@ -36,18 +38,19 @@
                 <input type="time" placeholder="Bis">
             </div> -->
             <div class="div_Form_Textarea">
-                <textarea class="Form_Textarea" placeholder="Beschreibung" id="big_text_input"></textarea>
+                <textarea class="Form_Textarea" name="description" placeholder="Beschreibung" id="big_text_input"></textarea>
             </div>
             <div class="Form_Bottom">
-                <button type="button" class="AddEntry" onclick="createToDo()">hinzufügen</button>
+                <button type="submit" value="createTodo" class="AddEntry" >hinzufügen</button>
             </div>
         </form>
     </div>
-
+<!-- onclick="createToDo()" -->
 <!------------------------------------------------------ CREATE DELETEFORM ------------------------------------------------------>
 <div id="DeleteForm"class="SidebarForm_Container">
     <form id="SFORM" class="SidebarForm" action="handler.php" method="POST">
         <input type="hidden" name="method"value="DeleteProject">
+        <input type="hidden" name="pname" id="pname" value="">
         <div class="SF_Text">
             <p>Möchten sie das Projekt wirklich löschen</p>
         </div>
@@ -102,17 +105,21 @@
                 <div class="resizer" id=test2></div>
                     <button class="openbtn" onclick="changeNav()">&#9776;</button>
                     <!-- <div id="sidebarelements"> -->
-
-                    <Form id="SidebarForm"action="handler.php" method="POST">
+                    <?php
+                        $projects = $sqlconn-> getProjects();
+                        foreach ( $projects as $project ) :
+                    ?>
+                    <Form id="SidebarProject"action="handler.php" method="POST">
                         <input type="hidden" name="method" value="ChangeProject">
                         <div class="SidebarElements">
-                            <input type="hidden" value="">
-                            <button class="sidebarbutton"type="submit"><p>Projekt 1</p></button>
-                            <button class="sidebarbutton" id="OpenSidebarForm" onclick="OpenForm()" type="button"><i class="fa fa-close"aria-hidden="true" ></i></button>
+                            <input type="hidden" name="projectId" value="<?php echo htmlspecialchars($project['id']) ?>">
+                            <button class="sidebarbutton" type="submit"><p><?php echo htmlspecialchars($project['name']) ?></p></button>
+                            <button class="sidebarbutton" id="OpenSidebarForm" onclick="OpenForm(<?php echo htmlspecialchars($project['name']) ?>)" type="button"><i class="fa fa-close"aria-hidden="true" ></i></button>
                         </div>
 
                     </Form>
-                        <div class="footer">
+                    <?php endforeach; ?>
+                    <div class="footer">
                             <button class="FooterButton"onclick="open_form_sidebar()">Neues Projekt</button>
                         </div>
                         <form id="footer_form" action="handler.php" method="POST">
@@ -139,8 +146,34 @@
                         <div class="PriorityHeader"id="HeaderHigh">
                             <h3>High</h3>
                             <button class="NewEntry" onclick="OpenPopup('High')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
+
                         </div>
+                        <?php 
+                            $items = $sqlconn->getTodos('High');
+                        ?>
                         <div class="PriorityArea" id="High" ondrop="drop(event)" ondragover="allowDrop(event)">
+                             <form class="sortable" hx-post="/items" hx-trigger="end">
+                                <!-- <div class="htmx-indicator">Updating...</div> -->
+                                <?php foreach ($items as $item): ?>
+                                    <div class="item" id="item-<?php echo $item['id']; ?>" data-id="<?php echo $item['id']; ?>" draggable="true">
+                                        <!-- Hidden inputs for id and position -->
+                                        <input type="hidden" name="id[<?php echo $item['id']; ?>]" value="<?php echo $item['id']; ?>">
+                                        <input type="hidden" name="position[<?php echo $item['id']; ?>]" value="<?php echo $item['position']; ?>">
+                            
+                                        <!-- To-do item text -->
+                                        <span><?php echo htmlspecialchars($item['name']); ?></span>
+                            
+                                        <!-- Delete form -->
+                                        <form action="handler.php" method="POST" style="display:inline;">
+                                            <input type="hidden" name="action" value="delete">
+                                            <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                            <button type="submit" class="delete_button">
+                                                <i class="fa fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                <?php endforeach; ?>
+                            </form>
                         </div>
                     </div>
 
@@ -149,7 +182,32 @@
                             <h3>Medium</h3>
                             <button class="NewEntry" onclick="OpenPopup('Medium')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                         </div>
+                        <?php 
+                            $items = $sqlconn->getTodos('Medium');
+                        ?>
                         <div class="PriorityArea" id="Medium" ondrop="drop(event)" ondragover="allowDrop(event)">
+                             <form class="sortable" hx-post="/items" hx-trigger="end">
+                                <!-- <div class="htmx-indicator">Updating...</div> -->
+                                <?php foreach ($items as $item): ?>
+                                    <div class="item" id="item-<?php echo $item['id']; ?>" data-id="<?php echo $item['id']; ?>" draggable="true">
+                                        <!-- Hidden inputs for id and position -->
+                                        <input type="hidden" name="id[<?php echo $item['id']; ?>]" value="<?php echo $item['id']; ?>">
+                                        <input type="hidden" name="position[<?php echo $item['id']; ?>]" value="<?php echo $item['position']; ?>">
+                            
+                                        <!-- To-do item text -->
+                                        <span><?php echo htmlspecialchars($item['name']); ?></span>
+                            
+                                        <!-- Delete form -->
+                                        <form action="handler.php" method="POST" style="display:inline;">
+                                            <input type="hidden" name="action" value="delete">
+                                            <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                            <button type="submit" class="delete_button">
+                                                <i class="fa fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                <?php endforeach; ?>
+                            </form>
 
                         </div>
                     </div>
@@ -160,8 +218,32 @@
                             <h3>Low</h3>
                             <button class="NewEntry" onclick="OpenPopup('Low')"><i class="fa fa-plus" aria-hidden="true"></i>  New Entry</button>
                         </div>
+                        <?php 
+                            $items = $sqlconn->getTodos('Low');
+                        ?>
                         <div class="PriorityArea"  id="Low" ondrop="drop(event)" ondragover="allowDrop(event)">
-
+                             <form class="sortable" hx-post="/items" hx-trigger="end">
+                                <!-- <div class="htmx-indicator">Updating...</div> -->
+                                <?php foreach ($items as $item): ?>
+                                    <div class="item" id="item-<?php echo $item['id']; ?>" data-id="<?php echo $item['id']; ?>" draggable="true">
+                                        <!-- Hidden inputs for id and position -->
+                                        <input type="hidden" name="id[<?php echo $item['id']; ?>]" value="<?php echo $item['id']; ?>">
+                                        <input type="hidden" name="position[<?php echo $item['id']; ?>]" value="<?php echo $item['position']; ?>">
+                            
+                                        <!-- To-do item text -->
+                                        <span><?php echo htmlspecialchars($item['name']); ?></span>
+                            
+                                        <!-- Delete form -->
+                                        <form action="handler.php" method="POST" style="display:inline;">
+                                            <input type="hidden" name="action" value="delete">
+                                            <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                            <button type="submit" class="delete_button">
+                                                <i class="fa fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                <?php endforeach; ?>
+                            </form>
                         </div>
                     </div>
                 </div>

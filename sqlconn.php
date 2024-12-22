@@ -7,6 +7,7 @@ include("dbcreate.php");
 
 class SQLConn
 {
+    private static $instance = null;
     private $db;
     private $host;
 
@@ -19,31 +20,33 @@ class SQLConn
         $this -> db -> close();
     }
 
+    public static function getInstance() {
+        if (!isset(self::$instance)) {
+            self::$instance = new SQLConn();
+        }
+        return self::$instance;
+    }
+
     function register($username, $mail, $password) {
-        // Passwort hashen
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $selectStatement= $this -> db -> prepare('SELECT * FROM user WHERE username = :username or mail = :mail');
         $selectStatement->bindValue(':username', $username);
         $selectStatement->bindValue(':mail', $mail);
         $result=$selectStatement->execute();
-        if ($result===false) {
+        if ($result-> fetchArray(SQLITE3_ASSOC)==false) {
 
-            // SQL-Statement vorbereiten
             $statement = $this -> db->prepare('INSERT INTO user (username, mail, password) VALUES (:username, :mail, :password)');
 
-            // Werte binden
             $statement->bindValue(':username', $username);
             $statement->bindValue(':mail', $mail);
             $statement->bindValue(':password', $hashedPassword);
 
-            // Ausführen und Fehler behandeln
             $statement->execute();
             $ID = $this -> db->lastInsertRowID();
             $this->host->login($ID,$username,$mail);
             $this -> createProject('Mein Projekt');
-            header("Location: index.php");
-            return 'Benutzer erfolgreich erstellt.';
+            return;
 
         } else {
             return 'E-Mail oder Benutzername existiert bereits.';
@@ -51,40 +54,35 @@ class SQLConn
     }
 
     function login($logintoken, $password) {
-        // SQL-Statement vorbereiten, um den Benutzer anhand der E-Mail zu finden
         $statement = $this -> db->prepare('SELECT id, username, mail, password FROM user WHERE mail = :logintoken OR username = :logintoken' );
         $statement->bindValue(':logintoken', $logintoken);
 
         try {
             $result = $statement->execute();
-            $loginattempt = $result->fetchArray(SQLITE3_ASSOC); // Benutzerdaten abrufen
-
-            // Überprüfen, ob ein Benutzer mit dieser E-Mail existiert
+            $loginattempt = $result->fetchArray(SQLITE3_ASSOC);
             if (!$loginattempt) {
                 return 'E-Mail oder Username ist falsch.';
             }
-
-            // Passwort überprüfen
             if (password_verify($password, $loginattempt['password'])) {
-                // Erfolg: Benutzer gefunden und Passwort korrekt
-                // Optional: Session starten oder Token generieren
                 $this -> host ->login( $loginattempt['id'],$loginattempt['username'],$loginattempt['mail'] );
-                header("Location: index.php");
-                return "Willkommen, " . htmlspecialchars($loginattempt['username']) . "!";
+                $statement = $this -> db -> prepare( "SELECT project_id FROM user_project WHERE user_id = :uid");
+                $statement->bindValue(":uid", $loginattempt["id"]);
+                $result = $statement-> execute();
+                if ($firstRes = $result->fetchArray(SQLITE3_ASSOC)) {
+                    $this -> host ->setProject($firstRes['project_id']);
+                }
+                return;
             } else {
-                // Passwort ist falsch
-                header("location: login.php");
                 return 'E-Mail oder Passwort ist falsch.';
             }
         } catch (PDOException $e) {
-            // Datenbankfehler behandeln
             return 'Datenbankfehler: ' . $e->getMessage();
         }
     }
 
     function createProject($pname) {
         $statement_project = $this -> db->prepare('INSERT INTO project ( name )
-            VALUES (:pid, :name)');
+            VALUES (:name)');
         $statement_project->bindValue(':name', $pname);
         try {
             $statement_project->execute();
@@ -92,32 +90,33 @@ class SQLConn
             if (!$ProjectID) {
                 return 'Anlegen Fehlgeschlagen';
             }
-            //USER_PROJECT TABELLEN INSERT
-            $this -> host -> setProject($pid = $ProjectID);
+            $this -> host -> setProject($ProjectID);
             $statement_user_project = $this -> db->prepare('INSERT INTO user_project ( user_id, project_id ) 
             VALUES (:uid, :pid)');
             $statement_user_project->bindValue( ':uid', $this -> host -> getId() );
             $statement_user_project->bindValue( ':pid', $ProjectID );
             $statement_user_project->execute();
-            //TEAM_USER TABELLEN INSERT
+
             if ($this-> host -> getTeamid() !== false) {
                 $statement_team_project = $this -> db->prepare('INSERT INTO team_project ( team_id, project_id ) 
                 VALUES (:tid, :pid)');
                 $statement_team_project->bindValue( ':tid', $this-> host ->getTeamid());
                 $statement_team_project->bindValue( ':pid', $ProjectID );
                 $statement_team_project->execute();
-                header("location: index.php");
             }
 
         } catch (PDOException $e) {
-            // Datenbankfehler behandeln
             return 'Datenbankfehler: ' . $e->getMessage();
         }
     }
 
-    function createTodo($priority, $name, $description, $position, $enddate = null) {
+    function createTodo($priority, $name, $description, $enddate = null) {
+        $query = "SELECT MAX(position) FROM todo";
+        $statement = $this -> db -> query($query);
+        $row = $statement -> fetchArray(SQLITE3_ASSOC);
+        $position = $row['MAX(position)'] + 1;
         $statement = $this -> db -> prepare('INSERT INTO todo (priority, name, description, enddate, position, project_id)
-        VALUE ( :priority, :name, :description, :enddate, :position :project_id)');
+        VALUES ( :priority, :name, :description, :enddate, :position, :project_id)');
         $statement ->bindValue(':priority', $priority);
         $statement ->bindValue(':name', $name);
         $statement ->bindValue(':description', $description);
@@ -126,6 +125,7 @@ class SQLConn
         $statement ->bindValue(':project_id', $this-> host ->getProject() );
         try {
             $statement -> execute();
+            return 'success';
         } catch (PDOException $e) {
             return 'Datenbankfehler: ' . $e->getMessage();
         }
@@ -187,15 +187,54 @@ class SQLConn
         }
     }
 
-    function getTodos() {
-        $statement = $this -> db -> prepare('SELECT * FROM todo WHERE project_id = :ProjectID');
-        $statement ->bindValue(':ProjectID', $this -> host ->getProject() );
+    function getProjects() {
+        $statement = $this -> db -> prepare('SELECT project.id, project.name FROM project JOIN user_project ON user_project.project_id = project.id WHERE user_id = :uid');
+        $statement -> bindValue(':uid', $this -> host ->getId());
         try {
-        $result = $statement -> execute();
-            return $result;
+            $result = $statement -> execute();
+            $items = [];
+            while (($row = $result -> fetchArray(SQLITE3_ASSOC)) != false) {
+                $items[] = $row;
+            }
+            return $items;
+        }catch (PDOException $e) {
+            return ''. $e->getMessage();
+        }
+    }
+
+    function deleteProject($name) {
+        $statement = $this -> db -> prepare('DELETE FROM project WHERE name = :pname');
+        $statement -> bindValue(':pname', $name);
+        try {
+            $statement -> execute();
+            return;
+        } catch (PDOException $e) {
+            return ''. $e->getMessage();
+        }
+    }
+
+    function getTodos($prio) {
+        $statement = $this -> db -> prepare('SELECT * FROM todo WHERE project_id = :ProjectID AND priority = :priority');
+        $statement ->bindValue(':ProjectID', $this -> host ->getProject() );
+        $statement ->bindValue(':priority', $prio );
+        try {
+            $result = $statement -> execute();
+            $items = [];
+            while (($row = $result -> fetchArray(SQLITE3_ASSOC)) != false) {
+                $items[] = $row;
+            }
+            return $items;
         }catch (PDOException $e) {
             return 'Datenbankfehler'. $e->getMessage();
         }
+    }
+
+    function setProject($id) {
+        $this -> host -> setProject($id);
+    }
+
+    function getHostProject() {
+        return $this -> host -> getProject();
     }
 
     function logout() {

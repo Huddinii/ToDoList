@@ -16,6 +16,13 @@ function changeNav() {
   }
 }
 
+window.addEventListener('beforeunload', (e) => {
+  var xhr = new XMLHttpRequest();
+  var data = 'method=logout'
+  xhr.open('POST', 'handler.php', false);
+    xhr.send(data);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
 const resizer = document.querySelector('.resizer');
 const sidebar = document.querySelector('.sidebar');
@@ -70,6 +77,8 @@ document.addEventListener('mouseup', () => {
     const inputField = document.getElementById("text_input");
     const datetField = document.getElementById("date_input");
     const biginputField = document.getElementById("big_text_input");
+    var priority = document.getElementById("priority");
+    priority.value = abteilung;
     inputField.value = ''; // Eingabefeld leeren
     datetField.value = ''; // Eingabefeld leeren
     biginputField.value = ''; // Eingabefeld leeren
@@ -155,11 +164,13 @@ document.addEventListener('mouseup', () => {
     form.reset(); // Optional: Formular zurücksetzen
   }   
 
- function OpenForm()
+ function OpenForm(project)
  {
   document.getElementById("DeleteForm").style.display = "block";
   // document.getElementById("ScreenWrapperID").style.pointerEvents = "none";
   const ScreenWrapper = document.getElementsByClassName("ScreenWrapper")[0]
+  var pname = document.getElementById("pname");
+  pname.value=project;
   ScreenWrapper.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
   ScreenWrapper.style.pointerEvents = "none";
   const buttons = document.querySelectorAll(".ScreenWrapper button");
