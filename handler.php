@@ -10,11 +10,13 @@ class RequestHandler {
             case 'login':
                 $result = $this ->Connection->login($params['username'], $params['password'] );
                 echo $result;
-                if ($result == false) {
-                    header('location: index.php');
+                if ($result === null) {
+                    header('Location: index.php');
+                    exit;
                 } else {
-                    header('Location: login.php');
-                    echo $result;
+                    $errorMsg = urlencode($result);
+                    header("Location: login.php?loginFailed=1&errorMsg=$errorMsg");
+                    exit;
                 }
                 break;
             case 'logout': 
@@ -37,6 +39,12 @@ class RequestHandler {
                 header('location: index.php');
                 break;
             case 'deleteTodo':
+                $this -> Connection -> deleteTodo($params['id']);
+                header('Location: index.php');
+                break;
+            case 'updatePosition':
+                $this -> Connection -> updatePosition($params['id'], $params['position'], $params['priority']);
+                header('Location: index.php');
                 break;
             case 'DeleteProject':
                 $this -> Connection->deleteProject($params['pname']);

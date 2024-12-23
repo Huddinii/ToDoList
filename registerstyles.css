@@ -74,3 +74,15 @@ button:hover {
     text-align: left;
     margin-bottom: 10px;
 }
+
+#errorMsg {
+    border: none;
+    color: red;
+    background: transparent;
+    padding: 0;
+}
+
+#errorMsg:focus {
+    outline: none;
+    border: none;
+}

@@ -111,9 +111,10 @@ class SQLConn
     }
 
     function createTodo($priority, $name, $description, $enddate = null) {
-        $query = "SELECT MAX(position) FROM todo";
-        $statement = $this -> db -> query($query);
-        $row = $statement -> fetchArray(SQLITE3_ASSOC);
+        $statement = $this -> db -> prepare("SELECT MAX(position) FROM todo WHERE priority = :priority");
+        $statement ->bindValue(":priority", $priority) ;
+        $result = $statement -> execute();
+        $row = $result -> fetchArray(SQLITE3_ASSOC);
         $position = $row['MAX(position)'] + 1;
         $statement = $this -> db -> prepare('INSERT INTO todo (priority, name, description, enddate, position, project_id)
         VALUES ( :priority, :name, :description, :enddate, :position, :project_id)');
@@ -201,6 +202,17 @@ class SQLConn
             return ''. $e->getMessage();
         }
     }
+    
+    function deleteTodo($id) {
+        $statement = $this -> db -> prepare('DELETE FROM todo WHERE id = :id');
+        $statement -> bindValue(':id', $id);
+        try {
+            $statement->execute();
+            return;
+        }catch (PDOException $e) {
+            return ''. $e->getMessage();
+        }
+    }
 
     function deleteProject($name) {
         $statement = $this -> db -> prepare('DELETE FROM project WHERE name = :pname');
@@ -214,7 +226,7 @@ class SQLConn
     }
 
     function getTodos($prio) {
-        $statement = $this -> db -> prepare('SELECT * FROM todo WHERE project_id = :ProjectID AND priority = :priority');
+        $statement = $this -> db -> prepare('SELECT * FROM todo WHERE project_id = :ProjectID AND priority = :priority ORDER BY position');
         $statement ->bindValue(':ProjectID', $this -> host ->getProject() );
         $statement ->bindValue(':priority', $prio );
         try {
@@ -227,6 +239,40 @@ class SQLConn
         }catch (PDOException $e) {
             return 'Datenbankfehler'. $e->getMessage();
         }
+    }
+
+    function updatePosition($id, $newposition, $prio) {
+        $statement = $this -> db -> prepare('SELECT position FROM todo WHERE id = :id');
+        $statement -> bindValue(':id', $id);
+        $result = $statement -> execute();
+        $row = $result -> fetchArray(SQLITE3_ASSOC);
+        $oldposition = $row['position'];
+
+        if ($newposition > $oldposition) {
+            $query = "UPDATE todo SET position = position - 1 WHERE priority = :priority AND position > ? AND position <= ?";
+            $statement = $this -> db->prepare($query);
+            $statement ->bindValue(":priority", $prio);
+            $statement->bindValue(1, $oldposition);
+            $statement->bindValue(2, $newposition);
+            $statement->execute();
+        }
+        // Move tasks up (shift positions up if the new position is lower)
+        else {
+            $query = "UPDATE todo SET position = position + 1 WHERE priority = :priority AND position < ? AND position >= ?";
+            $statement = $this -> db->prepare($query);
+            $statement->bindValue(":priority", $prio);
+            $statement->bindValue(1, $oldposition);
+            $statement->bindValue(2, $newposition);
+            $statement->execute();
+        }
+
+        // Finally, update the task's position
+        $query = "UPDATE todo SET position = :pos, priority = :priority WHERE id = :id";
+        $statement = $this -> db->prepare($query);
+        $statement->bindValue(':pos', $newposition);
+        $statement->bindValue(':priority', $prio);
+        $statement->bindValue(':id', $id);  // The ID of the todo being moved
+        $statement->execute();
     }
 
     function setProject($id) {
