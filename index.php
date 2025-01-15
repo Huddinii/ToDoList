@@ -152,7 +152,10 @@
             </div>
             <!------------------------------------------------------ Main ------------------------------------------------------>
             <div class="main">
-                <h2>ProjectName</h2>
+                <?php $projectsName = $sqlconn->getcurrentProject(); ?>
+                <h2>
+                <?php echo htmlspecialchars($projectsName['name']) ?>
+                </h2>
                 <div class="PriorityCategories">
                     <div class="PriorityElement">
                         <div class="PriorityHeader" id="HeaderHigh">

@@ -30,6 +30,12 @@ class SQLConn
     function register($username, $mail, $password) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+    // check if e-mail address is well-formed
+    if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+      return 'Keine Valide E-Mail';
+    }
+
+
         $selectStatement= $this -> db -> prepare('SELECT * FROM user WHERE username = :username or mail = :mail');
         $selectStatement->bindValue(':username', $username);
         $selectStatement->bindValue(':mail', $mail);
@@ -277,6 +283,19 @@ class SQLConn
 
     function setProject($id) {
         $this -> host -> setProject($id);
+    }
+
+    function getcurrentProject(){
+        $statement = $this -> db -> prepare('SELECT project.name FROM project WHERE project.id = :pid');
+        $statement -> bindValue(':pid', $this -> host ->getProject());
+        try {
+            $result = $statement -> execute();
+            while (($row = $result -> fetchArray(SQLITE3_ASSOC)) != false) {
+                return $row;
+            }
+        }catch (PDOException $e) {
+            return 'Datenbankfehler'. $e->getMessage();
+        }
     }
 
     function getHostProject() {
