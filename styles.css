@@ -439,7 +439,23 @@ height: 100%;
   padding: 1px 8px;
 }
 
+.PriorityCategories .PriorityElement .PriorityArea .item .show_button {
+  background-color: rgb(255, 255, 255);
+  font-size: 17px;
+  border: 1px solid;
+  border-radius: 20px;
+  box-shadow: 2px 2px 1px 1px #888;
+  padding: 1px 8px;
+}
 
+.PriorityCategories .PriorityElement .PriorityArea .item .show_button:hover {
+  background-color: rgb(173, 173, 173);
+  /* font-size: 18px; */
+  border: 1px solid;
+  border-radius: 20px;
+  box-shadow: 3px 3px 1px 1px #888;
+  padding: 1px 8px;
+}
 
 
 .PriorityCategories .PriorityElement .PriorityArea .item:drag-activ {

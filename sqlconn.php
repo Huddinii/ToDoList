@@ -219,6 +219,19 @@ class SQLConn
             return ''. $e->getMessage();
         }
     }
+    function showToDo($id) {
+        $statement = $this -> db -> prepare('SELECT * FROM ToDo WHERE id = :id');
+        $statement -> bindValue(':id', $id);
+        
+        try {
+            $result = $statement->execute();
+            $row = $result -> fetchArray(SQLITE3_ASSOC);
+            return $row;
+        }catch (PDOException $e) {
+            return ''. $e->getMessage();
+        }
+    }
+
 
     function deleteProject($name) {
         $statement = $this -> db -> prepare('DELETE FROM project WHERE name = :pname');

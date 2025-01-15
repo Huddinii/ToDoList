@@ -40,7 +40,7 @@
                 <input type="time" placeholder="Bis">
             </div> -->
             <div class="div_Form_Textarea">
-                <textarea class="Form_Textarea" name="description" placeholder="Beschreibung"
+                <textarea class="Form_Textarea" type="text" name="description" placeholder="Beschreibung"
                     id="big_text_input"></textarea>
             </div>
             <div class="Form_Bottom">
@@ -179,13 +179,22 @@
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <input type="hidden" name="position" value="<?php echo $item['position']; ?>">
                                     </form>
-                                    <form action="handler.php" method="POST" style="display:inline;">
+                                    <div style="display: flex;" >
+                                    <form action="handler.php" method="POST" style="display:inline; margin-right: 5%;">
+                                        <input type="hidden" name="method" value="showToDo">
+                                        <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                        <button type="submit" class="show_button">
+                                        <i class="fa fa-pencil"></i>
+                                        </button>
+                                    </form>
+                                    <form action="handler.php" method="POST" style="display: inline;" >
                                         <input type="hidden" name="method" value="deleteTodo">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <button type="submit" class="delete_button">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
+                                    </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -212,13 +221,22 @@
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <input type="hidden" name="position" value="<?php echo $item['position']; ?>">
                                     </form>
-                                    <form action="handler.php" method="POST" style="display:inline;">
+                                    <div style="display: flex;" >
+                                    <form action="handler.php" method="POST" style="display:inline; margin-right: 5%;">
+                                        <input type="hidden" name="method" value="showToDo">
+                                        <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                        <button type="submit" class="show_button">
+                                        <i class="fa fa-pencil"></i>
+                                        </button>
+                                    </form>
+                                    <form action="handler.php" method="POST" style="display: inline;" >
                                         <input type="hidden" name="method" value="deleteTodo">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <button type="submit" class="delete_button">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
+                                    </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -246,13 +264,22 @@
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <input type="hidden" name="position" value="<?php echo $item['position']; ?>">
                                     </form>
-                                    <form action="handler.php" method="POST" style="display:inline;">
+                                    <div style="display: flex;" >
+                                    <form action="handler.php" method="POST" style="display:inline; margin-right: 5%;">
+                                        <input type="hidden" name="method" value="showToDo">
+                                        <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                        <button type="submit" class="show_button">
+                                        <i class="fa fa-pencil"></i>
+                                        </button>
+                                    </form>
+                                    <form action="handler.php" method="POST" style="display: inline;" >
                                         <input type="hidden" name="method" value="deleteTodo">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <button type="submit" class="delete_button">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
+                                    </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>

@@ -58,7 +58,11 @@ class RequestHandler {
                 header('Location: index.php');
                 break;
             case 'CreateTodo':
-                $result = $this ->Connection->createTodo( $params['priority'], $params['name'], $params['desctiption']??'',$params['enddate']??'' );
+                $result = $this ->Connection->createTodo( $params['priority'], $params['name'], $params['description']??'',$params['enddate']??'' );
+                header('location: index.php');
+                break;
+            case 'showToDo':
+                $result = $this->Connection->showToDo($params['id']);
                 header('location: index.php');
                 break;
             default:
