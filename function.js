@@ -195,6 +195,34 @@ document.addEventListener('mouseup', () => {
  }
 
 
+
+ function show_data() {
+  const buttons = document.querySelectorAll('.show_button');
+
+  buttons.forEach(button => {
+    // Event-Listener nur einmal registrieren
+    if (!button.dataset.listenerAdded) {
+      button.addEventListener('click', () => {
+        // Ziel-Div ermitteln
+        const targetId = button.getAttribute('data-target');
+        const targetDiv = document.getElementById(targetId);
+
+        // Div ein- oder ausblenden
+        if (targetDiv.style.display === 'none' || !targetDiv.style.display) {
+          targetDiv.style.display = 'block'; // Einblenden
+        } else {
+          targetDiv.style.display = 'none'; // Ausblenden
+        }
+      });
+
+      // Vermerken, dass der Listener hinzugefügt wurde
+      button.dataset.listenerAdded = 'true';
+    }
+  });
+}
+
+
+
 function Impressum() {
   window.location.href = "Impressum.php"; // Relativer Pfad zur neuen Seite
 }

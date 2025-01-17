@@ -402,11 +402,9 @@ height: 100%;
 } */
 
 .PriorityCategories .PriorityElement .PriorityArea .item {
-
-  display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   cursor: pointer;
-  display: flex;
+  /* display: flex; */
   padding: 0.5em;
   border: 1px solid;
   border-radius: 5px;
@@ -461,6 +459,16 @@ height: 100%;
 .PriorityCategories .PriorityElement .PriorityArea .item:drag-activ {
   border: 2px solid #000;
   background-color: darkmagenta;
+}
+
+.ToDoTitle {
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: 2%;
+}
+
+.ToDoData {
+  display: none;
 }
 
 

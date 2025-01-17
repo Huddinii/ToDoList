@@ -171,6 +171,8 @@
                             <?php foreach ($items as $item): ?>
                                 <div class="item" id="item-<?php echo $item['id']; ?>" data-id="<?php echo $item['id']; ?>"
                                     draggable="true" ondragstart="drag(event)">
+
+                                    <div class="ToDoTitle">
                                     <span><?php echo htmlspecialchars($item['name']); ?></span>
 
                                     <form class="updatePosition" action="handler.php" method="POST">
@@ -179,21 +181,24 @@
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <input type="hidden" name="position" value="<?php echo $item['position']; ?>">
                                     </form>
-                                    <div style="display: flex;" >
-                                    <form action="handler.php" method="POST" style="display:inline; margin-right: 5%;">
+                                    <div>
                                         <input type="hidden" name="method" value="showToDo">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
-                                        <button type="submit" class="show_button">
-                                        <i class="fa fa-pencil"></i>
+                                        <button type="submit" data-target="itemdata-<?php echo $item['id']; ?>" class="show_button" onclick="show_data()">
+                                        <i class="fa fa-eye"></i>
                                         </button>
-                                    </form>
                                     <form action="handler.php" method="POST" style="display: inline;" >
                                         <input type="hidden" name="method" value="deleteTodo">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <button type="submit" class="delete_button">
                                             <i class="fa fa-trash"></i>
                                         </button>
+                                        </div>
                                     </form>
+                                    </div>
+                                    <div class="ToDoData" id="itemdata-<?php echo $item['id']; ?>">
+                                        <p type="date" class="ToDoEnddatae" style="display: flex;">Endtermin: <?php echo date("d.m.Y", strtotime($item['enddate']));?></p>
+                                        <p type="text" class="ToDoDescription" style="display: flex;"><?php echo $item['description'];?></p>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
