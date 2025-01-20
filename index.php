@@ -85,7 +85,14 @@
                     </div>
                 </div>
                 <div class="headerbuttons_right">
-                    <button class="headerbtn" id="User"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
+                    <?php 
+                    if (isset($_SESSION['uid']) && $_SESSION != false) {
+                        $style = 'pointer-events: auto;';
+                    } else {
+                        $style = 'pointer-events: none; background-color: darkgrey;';   
+                    }
+                    ?>
+                    <button class="headerbtn" id="User" style="<?php echo $style; ?>" onclick="Impressum()"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
                     <form action="handler.php" method="POST" class="headerform">
                         <?php
                         if (isset($_SESSION['uid']) && $_SESSION != false) {
@@ -98,7 +105,7 @@
 
                         ?>
                         <input type="hidden" name="method" value="<?php echo $action; ?>">
-                        <button type="submit" class="headerbtn"><i class="fa <?php echo $classname ?>"
+                        <button type="submit" class="headerbtn"><i class="fa <?php echo $classname; ?>"
                                 aria-hidden="true"></i></button>
                     </form>
                 </div>
