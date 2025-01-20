@@ -106,12 +106,20 @@ header{
   font-size: 20px;
   display: block;
 }
-.dropdown:hover #Team {
-  border-radius: 40px;
-  font-size: 20px;
-}
 .dropdown:hover #Team p {
   display: block;
+}
+.dropdown:hover #Team {
+  border-radius:  60px;
+  transition: all 0.2s ease;
+  background-color: #3f7cff;
+  height: 87%;
+  width: 100%;
+  font-size: 20px;
+  box-shadow: 3px 3px 1px 1px #26205e;
+}
+.dropdown:hover #Team p{
+ font-size: 25px;
 }
 
 

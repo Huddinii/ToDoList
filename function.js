@@ -45,7 +45,7 @@ document.addEventListener('mousemove', (e) => {
   e.preventDefault();
   // Berechnung der neuen Breite
   const newWidth = e.clientX;
-  if (newWidth > 150 && newWidth < 600) { // Mindest- und Maximalbreite
+  if (newWidth > 185 && newWidth < 600) { // Mindest- und Maximalbreite
     sidebar.style.width = `${newWidth}px`;
     console.log("bewegt");
   }
