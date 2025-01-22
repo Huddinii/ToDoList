@@ -196,10 +196,19 @@ document.addEventListener('mouseup', () => {
 
 
 
- function show_data() {
-  const buttons = document.querySelectorAll('.show_button');
+ function show_data(dataID) {
+  console.log(dataID)
+  const paragraphs = document.getElementById(`itemdata-${dataID}`);
+  // const buttons = document.querySelectorAll('.show_button')
+    if (paragraphs.style.display === 'none' || !paragraphs.style.display) {
+      paragraphs.style.display = 'block';
+      console.log("if")
+    } else {
+      paragraphs.style.display = 'none';
+      console.log("else")
+    }
 
-  buttons.forEach(button => {
+  /*buttons.forEach(button => {
     // Event-Listener nur einmal registrieren
     if (!button.dataset.listenerAdded) {
       button.addEventListener('click', () => {
@@ -218,7 +227,7 @@ document.addEventListener('mouseup', () => {
       // Vermerken, dass der Listener hinzugefügt wurde
       button.dataset.listenerAdded = 'true';
     }
-  });
+  });*/
 }
 
 

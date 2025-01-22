@@ -191,7 +191,7 @@
                                     <div>
                                         <input type="hidden" name="method" value="showToDo">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
-                                        <button type="submit" data-target="itemdata-<?php echo $item['id']; ?>" class="show_button" onclick="show_data()">
+                                        <button type="submit" data-target="itemdata-<?php echo $item['id']; ?>" class="show_button" onclick="show_data('<?php echo $item['id']?>')">
                                         <i class="fa fa-eye"></i>
                                         </button>
                                     <form action="handler.php" method="POST" style="display: inline;" >
@@ -204,8 +204,8 @@
                                     </form>
                                     </div>
                                     <div class="ToDoData" id="itemdata-<?php echo $item['id']; ?>">
-                                        <p type="date" class="ToDoEnddatae" style="display: flex;">Endtermin: <?php echo date("d.m.Y", strtotime($item['enddate']));?></p>
-                                        <p type="text" class="ToDoDescription" style="display: flex;"><?php echo $item['description'];?></p>
+                                        <p type="date" class="ToDoEnddatae" style="display: flex;">Endtermin: <?php echo $item['enddate'] ? date("d.m.Y", strtotime($item['enddate'])) :'-' ;?></p>
+                                        <p type="text" class="ToDoDescription" style="display: flex;">Beschreibung: <?php echo $item['description'] ? $item['description'] : "-";?></p>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -238,7 +238,7 @@
                                     <div>
                                         <input type="hidden" name="method" value="showToDo">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
-                                        <button type="submit" data-target="itemdata-<?php echo $item['id']; ?>" class="show_button" onclick="show_data()">
+                                        <button type="submit" data-target="itemdata-<?php echo $item['id']; ?>" class="show_button" onclick="show_data('<?php echo $item['id']?>')">
                                         <i class="fa fa-eye"></i>
                                         </button>
                                     <form action="handler.php" method="POST" style="display: inline;" >
@@ -251,8 +251,8 @@
                                     </form>
                                     </div>
                                     <div class="ToDoData" id="itemdata-<?php echo $item['id']; ?>">
-                                        <p type="date" class="ToDoEnddatae" style="display: flex;">Endtermin: <?php echo date("d.m.Y", strtotime($item['enddate']));?></p>
-                                        <p type="text" class="ToDoDescription" style="display: flex;"><?php echo $item['description'];?></p>
+                                        <p type="date" class="ToDoEnddatae" style="display: flex;">Endtermin: <?php echo $item['enddate'] ? date("d.m.Y", strtotime($item['enddate'])) :'-' ;?></p>
+                                        <p type="text" class="ToDoDescription" style="display: flex;">Beschreibung: <?php echo $item['description'] ? $item['description'] : "-";?></p>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -286,7 +286,7 @@
                                     <div>
                                         <input type="hidden" name="method" value="showToDo">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
-                                        <button type="submit" data-target="itemdata-<?php echo $item['id']; ?>" class="show_button" onclick="show_data()">
+                                        <button type="submit" data-target="itemdata-<?php echo $item['id']; ?>" class="show_button" onclick="show_data('<?php echo $item['id']?>')">
                                         <i class="fa fa-eye"></i>
                                         </button>
                                     <form action="handler.php" method="POST" style="display: inline;" >
@@ -299,8 +299,8 @@
                                     </form>
                                     </div>
                                     <div class="ToDoData" id="itemdata-<?php echo $item['id']; ?>">
-                                        <p type="date" class="ToDoEnddatae" style="display: flex;">Endtermin: <?php echo date("d.m.Y", strtotime($item['enddate']));?></p>
-                                        <p type="text" class="ToDoDescription" style="display: flex;"><?php echo $item['description'];?></p>
+                                        <p type="date" class="ToDoEnddatae" style="display: flex;">Endtermin: <?php echo $item['enddate'] ? date("d.m.Y", strtotime($item['enddate'])) :'-' ;?></p>
+                                        <p type="text" class="ToDoDescription" style="display: flex;">Beschreibung: <?php echo $item['description'] ? $item['description'] : "-";?></p>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
